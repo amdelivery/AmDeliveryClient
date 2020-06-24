@@ -156,7 +156,8 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 currentOrder: {
                     ...initialState.currentOrder
-                }
+                },
+                itemsInCart: []
             }
 
         case "GET_PHONE": {
