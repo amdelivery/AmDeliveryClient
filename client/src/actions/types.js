@@ -1,0 +1,16 @@
+export const CITY_SELECTED = "CITY_SELECTED";
+export const DATA_FIRSTLOAD = "DATA_FIRSTLOAD";
+export const GET_ID = "GET_ID";
+export const ID_NULL = "ID_NULL";
+export const PLUS_QUANT = "PLUS_QUANT";
+export const MINUS_QUANT = "MINUS_QUANT";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const CHANGE_QUANT = "CHANGE_QUANT";
+export const PLUS_QUANT_CART = "PLUS_QUANT_CART";
+export const MINUS_QUANT_CART = "MINUS_QUANT_CART";
+export const ADD_TO_ORDER = "ADD_TO_ORDER";
+export const DEL_FROM_CART = "DEL_FROM_CART";
+export const CLEAR_CUR_ORDER = "CLEAR_CUR_ORDER";
+export const GET_PHONE = "GET_PHONE";
+export const GET_ADRESS = "GET_ADRESS";
+export const GET_COMMENT = "GET_COMMENT";

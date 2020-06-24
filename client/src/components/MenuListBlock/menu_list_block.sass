@@ -1,0 +1,100 @@
+.menu-list-block
+    margin-left: 71px
+    margin-top: 20px
+    margin-bottom: 5px
+    
+    &__title
+        font-family: 'Roboto', sans-serif
+        font-size: 22px
+        font-weight: 400
+    &__item-wrapper
+        display: flex
+        justify-content: flex-start
+        flex-wrap: wrap
+       
+    &__item
+        position: relative
+        margin-top: 25px
+        margin-right: 20px
+        height: 416px
+        max-width: 272px
+        background-color: #fff
+        transition: 0.1s all
+        
+        &:hover
+            box-shadow: 2px 0 2px rgba(124, 122, 122, 0.1), -2px 0 3px rgba(124, 122, 122, 0.1)
+            button
+                visibility: visible
+            .menu-list-block__item__descr_hidden
+                display: block
+            .menu-list-block__item__descr
+                display: none
+            
+        
+        &__info-container
+            position: relative
+            padding: 15px
+            background-color: #fff
+            width: 272px
+            height: 144px
+
+        &__infotext
+            position: absolute
+            width: 272px
+            padding: 15px
+            left: 0
+            bottom: 35px
+            background-color: #fff
+            
+
+            
+
+        &__title
+            font-family: 'Roboto', sans-serif
+            font-weight: 400
+            font-size: 15px
+        &__descr
+            display: block
+            font-family: 'Roboto', sans-serif
+            font-weight: 300
+            min-height: 50px
+            font-size: 12px
+            color: #a599a7
+            margin-top: 10px
+            &_hidden
+                display: none
+                font-family: 'Roboto', sans-serif
+                font-weight: 300
+                min-height: 50px
+                font-size: 12px
+                color: #a599a7
+                margin-top: 10px
+        &__price
+            position: absolute
+            bottom: 20px
+            font-family: 'Roboto', sans-serif
+            font-weight: 700
+        &__button
+            visibility: hidden
+            position: absolute
+            width: 128px
+            height: 30px
+            margin-top: 20px
+            border: none
+            border-radius: 4px
+            background-color: #0ec645
+            font-family: 'Roboto', sans-serif
+            font-size: 16px
+            color: #fff
+            cursor: pointer
+            right: 15px
+            bottom: 15px
+            &:hover
+                background-color: #10b93d
+
+
+            
+            
+        img
+            width: 272px
+

@@ -1,0 +1,53 @@
+.box
+    margin-top: 3px
+    margin-right: 3px
+
+
+
+.restaurant-info
+    position: absolute
+    width: 1000px
+    height: 189px
+    top: 70px
+    display: flex
+    align-items: center
+    &__right-side
+        border: 1px solid #e3e4e6
+        border-radius: 6px
+        margin-left: 453px
+        padding: 18px 5px
+        &__img
+            img
+                width: 120px
+           
+    &__left-side
+        margin-top: 40px
+        margin-left: 71px
+        &__info-items
+            display: flex
+            justify-content: flex-start
+            &__item
+                height: 31px
+                margin-top: 20px
+                margin-right: 15px
+                border-radius: 20px
+                box-shadow: 0 -2px 8px 0 rgba(0,0,0,.04), 0 8px 8px 0 rgba(0,0,0,.04);
+                cursor: pointer
+                font-family: 'Roboto', sans-serif
+                font-size: 12px
+                font-weight: 500
+                line-height: 22px
+                padding: 5px 10px 5px 10px
+                transition: 0.14s all ease
+                &:nth-child(1)
+                    display: flex
+                    color:#0ec645
+                &:hover
+                    transform: translateY(-10%)
+                    box-shadow: 0 -2px 14px 0 rgba(0,0,0,.08), 0 8px 14px 0 rgba(0,0,0,.08);
+
+
+        &__title
+            font-family: 'Roboto', sans-serif
+            font-size: 46px
+            font-weight: 700

@@ -1,0 +1,54 @@
+const express = require('express');
+const router = express.Router();
+
+
+//Item model
+const Item = require('../../models/Item.js');
+const Order = require('../../models/order.js');
+
+//@route GET api/items
+//@desc get all items
+//@acess public
+router.get('/', (req, res) => {
+    Item.find()
+        .then(items => res.json(items))
+});
+
+//@route POST api/items
+//@desc create new item
+//@acess public
+router.post('/', (req, res) => {
+    newItem = new Item({
+        name: req.body.name
+    });
+
+    newItem.save().then(item => res.json(item));
+});
+
+//@route DELETE api/items/:id
+//@desc  delete item
+//@acess public
+router.delete('/:id', (req, res) => {
+    Item.findById(req.params.id)
+        .then(item => item.remove().then(() => res.json({success: true})))
+        .catch(err => res.status(404).json({success: false}));
+});
+
+router.post('/order', (req, res) => {
+    newOrder = new Order({
+        date: req.body.date,
+        adress: req.body.adress,
+        phone: req.body.phone,
+        comment: req.body.comment,
+        items: req.body.items,
+        cost: req.body.cost
+    })
+
+    newOrder.save().then(item => res.json(item));
+})
+
+
+
+
+
+module.exports = router;
