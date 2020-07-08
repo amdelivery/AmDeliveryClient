@@ -1,47 +1,61 @@
+.hidden
+    display: none
+    
 .cart
     position: fixed
     display: flex
     flex-direction: column
     align-items: center
-    width: 346px
+    width: 20%
     height: calc(100vh - 70px)
     background-color: #fff
     top: 70px
     right: 0px
     text-align: center
     box-shadow: 0 4px 8px 0 rgba(0,0,0,.08);
+    
     &__item
         display: flex
+        flex-direction: column
         position: relative
-        justify-content: space-between
+        justify-content: flex-start
         align-items: center
-        width: 346px
-        height: 62px
+        width: 100%
+        min-height: 62px
         border-bottom: 1px solid #e3e4e6
         padding: 15px 40px
         &:hover
+            background-color: #f1f1f1
             .cart__item__name-counter__counter__minus
                 display: block
             .cart__item__name-counter__counter__plus
                 display: block
-            .cart__item__name-counter
-                width: 74%
-        &__name-counter
-            position: absolute
-            width: 61%
-            right: 92px
+        &__delivery
             display: flex
+            position: relative
+            justify-content: space-between
+            align-items: center
+            width: 100%
+            height: 62px
+            border-bottom: 1px solid #e3e4e6
+            padding: 15px 40px
+        &__line
+            display: flex
+            justify-content: space-between
+            align-items: center
+            width: 100%
+        &__name-counter
+            width: 80%
+            height: 38px
+            display: flex
+            justify-content: space-between
             align-items: center
             transition: all 0.3s
             &__name
-                position: absolute
-                left: 0px
                 font-family: 'Roboto', sans-serif
                 font-size: 12px
                 font-weight: 400
             &__counter
-                position: absolute
-                right: 0
                 display: flex
                 align-items: center
                 transition: all 0.3s
@@ -79,10 +93,17 @@
                     color: #919399
 
         &__price
-            position: absolute
             font-weight: 500
             font-size: 14px
-            right: 10px
+        &__modificators
+            display: flex
+            flex-direction: column
+            width: 100%
+            &__wrapper
+                display: flex
+                color: #c0c0c0
+                font-size: 14px
+
 
     &__button
         position: absolute
@@ -91,7 +112,7 @@
         align-items: center
         bottom: 15px
         left: 10px
-        width: 328px
+        width: 95%
         height: 56px
         background-color: #0ec645
         border: none
@@ -115,7 +136,7 @@
 
     &__img__cart
         width: 150px
-        margin-top: 170px
+        margin-top: 82%
         padding-right: 24px
     &__descr
         font-family: 'Roboto', sans-serif

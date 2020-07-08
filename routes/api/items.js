@@ -5,6 +5,7 @@ const router = express.Router();
 //Item model
 const Item = require('../../models/Item.js');
 const Order = require('../../models/order.js');
+const Category = require('../../models/category.js');
 
 //@route GET api/items
 //@desc get all items
@@ -12,6 +13,11 @@ const Order = require('../../models/order.js');
 router.get('/', (req, res) => {
     Item.find()
         .then(items => res.json(items))
+});
+
+router.get('/categories', (req, res) => {
+    Category.find().sort({weight: 1})
+                   .then(items => res.json(items))
 });
 
 //@route POST api/items
@@ -41,7 +47,8 @@ router.post('/order', (req, res) => {
         phone: req.body.phone,
         comment: req.body.comment,
         items: req.body.items,
-        cost: req.body.cost
+        cost: req.body.cost,
+        accepted: false
     })
 
     newOrder.save().then(item => res.json(item));

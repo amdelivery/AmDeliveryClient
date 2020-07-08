@@ -1,5 +1,4 @@
-import React from 'react';
-import StartPage from './components/startPage';
+import React, {Component} from 'react';
 import AppHeader from './components/AppHeader';
 import ModalOrder from './components/modalOrder';
 import {connect} from 'react-redux';
@@ -9,34 +8,45 @@ import './App.sass';
 import RestaurantInfo from './components/RestaurantInfo';
 import MenuList from './components/MenuList';
 import ModalAddingToCart from './components/modalAddingToCart';
+import { getDataFromServer, setCitySelected, getAllCategories } from './actions/itemActions';
 
-const App = ({loadingDataIsOver, citySelected, idItemForAdding, currentOrder}) => {
-  const modalOrder = (currentOrder.items.length === 0) ? null : <ModalOrder/>
-  const modalWithItem = (idItemForAdding !== null) ? <ModalAddingToCart/> : null;
-  const renderedItem = (citySelected === true && loadingDataIsOver === true) ? (
-  <>
-    <AppHeader/>
-    <Cart/>
-    <RestaurantInfo/>
-    <MenuList/>
-    {modalWithItem}
-    {modalOrder}
-  </>
+class App extends Component  {
+      
+      componentDidMount() {
+        this.props.getDataFromServer();
+        this.props.setCitySelected();
+        this.props.getAllCategories();
+        }
+
+
+
+      render () {
+        const  {idItemForAdding, currentOrder} = this.props;
+        const modalOrder = (currentOrder.items.length === 0) ? null : <ModalOrder/>
+        const modalWithItem = (idItemForAdding !== null) ? <ModalAddingToCart/> : null;
+      
+        return (
+          <>
+            <AppHeader/>
+            <Cart/>
+            <RestaurantInfo/>
+            <MenuList/>
+            {modalWithItem}
+            {modalOrder}
+          </>
+        );
+      }
   
-  ) : <StartPage/>;
-
-  return (
-    <>
-      {renderedItem}
-    </>
-  );
 }
 
 App.propTypes = {
     loadingDataIsOver: PropTypes.bool.isRequired,
     citySelected: PropTypes.bool.isRequired,
     idItemForAdding: PropTypes.string,
-    currentOrder: PropTypes.object
+    currentOrder: PropTypes.object,
+    getDataFromServer: PropTypes.func,
+    setCitySelected: PropTypes.func,
+    getAllCategories: PropTypes.func
 }
 
 
@@ -51,4 +61,4 @@ const mapStateToProps = ( {loadingDataIsOver, citySelected, idItemForAdding, cur
 
 
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {getDataFromServer, setCitySelected, getAllCategories})(App);

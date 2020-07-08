@@ -8,10 +8,7 @@ const ItemSchema = new Schema ({
     imgUrl: String,
     price: String,
     avalaible: Boolean,
-    category: {
-        name: String,
-        weight: Number
-    }
+    category: String
 })
 
 

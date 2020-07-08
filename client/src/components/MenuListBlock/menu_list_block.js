@@ -5,28 +5,28 @@ import {connect} from 'react-redux';
 import {getItemIdForAdding} from '../../actions/itemActions.js';
 
 
-const MenuListBlock = ({categoriesForRender, allItems, getItemIdForAdding}) => {
+const MenuListBlock = ({categories, allItems, getItemIdForAdding}) => {
       
       return (
           <>
-            {categoriesForRender.map((category, i) => {
-                const renderedItem = allItems.filter(item => (item.category.name === category) ? item : null);
+            {categories.map(cat => {
+                const renderedItem = allItems.filter(item => (item.category !== cat.name) ? null : (item.category === "Без категории") ? null : (item.available === "Да") ? item : null);
                 return (
-                    <div key={i} className="menu-list-block">
-                        <div className="menu-list-block__title" id={category}>{category}</div>
+                    <div key={cat._id} className="menu-list-block">
+                        <div className="menu-list-block__title" id={cat.name}>{(cat.name !== "Без категории") ? cat.name : null}</div>
                         <div className="menu-list-block__item-wrapper">
-                            {renderedItem.map(({_id, name, description, imgUrl, price}) => {
+                            {renderedItem.map(item => {
                                 return (
-                                    <div key={_id} className="menu-list-block__item" onClick={(e) => getItemIdForAdding(_id, e)}>
-                                        <img src={imgUrl} alt={name}/>
+                                    <div key={item._id} className="menu-list-block__item" onClick={(e) => getItemIdForAdding(item._id, e)}>
+                                        <img src={item.imgUrl} alt={item.name}/>
                                         <div className="menu-list-block__item__info-container">
                                                 <div className="menu-list-block__item__infotext">
-                                                    <div className="menu-list-block__item__title">{name}</div>
-                                                    <div className="menu-list-block__item__descr">{description.slice(0, 51)}...</div>
-                                                    <div className="menu-list-block__item__descr_hidden">{description}</div>
+                                                    <div className="menu-list-block__item__title">{item.name}</div>
+                                                    <div className="menu-list-block__item__descr">{item.description.slice(0, 51)}...</div>
+                                                    <div className="menu-list-block__item__descr_hidden">{item.description}</div>
                                                 </div>
                                                 
-                                                <div className="menu-list-block__item__price">{price} ₽</div>
+                                                <div className="menu-list-block__item__price">{item.price} ₽</div>
                                                 <button className="menu-list-block__item__button">В корзину</button>
                                         </div>
                                         
@@ -43,13 +43,14 @@ const MenuListBlock = ({categoriesForRender, allItems, getItemIdForAdding}) => {
 }
 
 MenuListBlock.propTypes = {
-    categoriesForRender: PropTypes.array.isRequired,
     allItems: PropTypes.array.isRequired,
-    getItemIdForAdding: PropTypes.func.isRequired
+    getItemIdForAdding: PropTypes.func.isRequired,
+    categories: PropTypes.array
 }
-const mapStateToProps = ({allItems}) => {
+const mapStateToProps = ({allItems, categories}) => {
         return {
-            allItems
+            allItems,
+            categories
         }
 }
 

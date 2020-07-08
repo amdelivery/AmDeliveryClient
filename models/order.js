@@ -7,7 +7,8 @@ const OrderSchema = new Schema ({
     phone: String,
     comment: String,
     items: Array,
-    cost: String
+    cost: String,
+    accepted: String
 })
 
 module.exports = Order = mongoose.model('order', OrderSchema);

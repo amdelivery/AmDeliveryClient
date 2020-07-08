@@ -14,3 +14,6 @@ export const CLEAR_CUR_ORDER = "CLEAR_CUR_ORDER";
 export const GET_PHONE = "GET_PHONE";
 export const GET_ADRESS = "GET_ADRESS";
 export const GET_COMMENT = "GET_COMMENT";
+export const GET_ALL_CAT = "GET_ALL_CAT";
+export const CHECK_MOD = "CHECK_MOD";
+export const UNCHECK_MOD = "UNCHECK_MOD";

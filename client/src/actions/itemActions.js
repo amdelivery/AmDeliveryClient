@@ -1,6 +1,8 @@
 import {CITY_SELECTED,
         DATA_FIRSTLOAD,
-        GET_ID, ID_NULL, 
+        GET_ID,
+        ID_NULL,
+        GET_ALL_CAT, 
         PLUS_QUANT, 
         MINUS_QUANT, 
         ADD_TO_CART, 
@@ -12,6 +14,8 @@ import {CITY_SELECTED,
         CLEAR_CUR_ORDER,
         GET_PHONE,
         GET_ADRESS,
+        CHECK_MOD,
+        UNCHECK_MOD,
         GET_COMMENT } from "./types.js";
 
 import axios from 'axios';
@@ -66,28 +70,29 @@ export const addItemToCart = ({_id}, quantity) => {
     }
 }
 
-export const changeItemQuant = ({_id}, quantity) => {
+export const changeItemQuant = ({_id}, quantity, allModsNamesString) => {
     return {
         type: CHANGE_QUANT,
         payload: {
             _id, 
-            quantity
+            quantity,
+            allModsNamesString
         }
     }
 }
 
 
-export const plusQuantinCart = (_id) => {
+export const plusQuantinCart = (idForCart) => {
     return {
         type: PLUS_QUANT_CART,
-        payload: _id
+        payload: idForCart
     }
 }
 
-export const minusQuantinCart = (_id) => {
+export const minusQuantinCart = (idForCart) => {
     return {
         type: MINUS_QUANT_CART,
-        payload: _id
+        payload: idForCart
     }
 }
 
@@ -134,3 +139,24 @@ export const getComment = (comment) => {
         payload: comment
     }
 }
+
+export const getAllCategories = () => dispatch => {
+    axios.get('/api/categories').then(res => dispatch({
+        type: GET_ALL_CAT,
+        payload: res.data
+    }))
+}
+
+export const checkMod = (item) => {
+    return {
+        type: CHECK_MOD,
+        payload: item
+    }
+} 
+
+export const uncheckMod = (item) => {
+    return {
+        type: UNCHECK_MOD,
+        payload: item
+    }
+} 

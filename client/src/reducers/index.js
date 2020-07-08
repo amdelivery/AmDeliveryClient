@@ -1,4 +1,4 @@
-
+import {v4 as uuid} from 'uuid';
 
 
 const initialState = {
@@ -6,7 +6,9 @@ const initialState = {
     citySelected: false,
     allItems: [],
     idItemForAdding: null,
+    checkedMods: [],
     quantity: 1,
+    categories: [],
     itemsInCart: [],
     currentOrder: {
         date: "",
@@ -34,6 +36,15 @@ const reducer = (state = initialState, action) => {
                 loadingDataIsOver: true,
                 allItems: action.payload
             }
+
+        case "GET_ALL_CAT": {
+            console.log(action.payload)
+            return {
+                ...state,
+                categories: [...action.payload]
+            }
+        }
+
         case "GET_ID":
             return {
                 ...state,
@@ -58,48 +69,72 @@ const reducer = (state = initialState, action) => {
         case "ADD_TO_CART": {
             const {_id} = action.payload
             const findItem = state.allItems.filter(item => item._id === _id);
+            const deliveryObj = (state.itemsInCart.length > 0) ? null : {name: "Доставка", _id: "delivery", price: "150", quantity: 1, modificators: []};
+            const modsPrices = state.checkedMods.map(mod => mod.price);
+            const modsPricesSum = modsPrices.reduce((sum, current) => sum + +current, 0);
+            const modsNamesArray = state.checkedMods.map(mod => mod.name);
+            const modsNamesString = modsNamesArray.join();
+            console.log(modsNamesString)
             const newItem = {
                 name: findItem[0].name,
                 _id: findItem[0]._id,
-                price: findItem[0].price,
-                quantity: action.payload.quantity
+                idForCart: uuid(),
+                price: +findItem[0].price + modsPricesSum,
+                quantity: action.payload.quantity,
+                modificators: state.checkedMods,
+                modsNames: modsNamesString
             }
+            const arrayForItemsInCart = (deliveryObj !== null) ? [ deliveryObj, ...state.itemsInCart, newItem] : [...state.itemsInCart, newItem]
             return {
                 ...state,
-                itemsInCart: [...state.itemsInCart, newItem],
+                itemsInCart: arrayForItemsInCart,
                 idItemForAdding: null,
-                quantity: 1
+                quantity: 1,
+                checkedMods: []
             }
         }
+
+
+
         case "CHANGE_QUANT":{
-            const {_id, quantity} = action.payload;
-            const itemIndex = state.itemsInCart.findIndex(item => item._id === _id);
+            const {_id, quantity, allModsNamesString} = action.payload;
+            const modsPrices = state.checkedMods.map(mod => mod.price);
+            const modsPricesSum = modsPrices.reduce((sum, current) => sum + +current, 0);
+            const modsNamesArray = state.checkedMods.map(mod => mod.name);
+            const modsNamesString = modsNamesArray.join();
+            const itemIndex = state.itemsInCart.findIndex(item => item._id === _id && item.modsNames === allModsNamesString);
             const findItem = state.allItems.filter(item => item._id === _id);
             const newItem = {
                 name: findItem[0].name,
                 _id: findItem[0]._id,
-                price: findItem[0].price,
-                quantity: state.itemsInCart[itemIndex].quantity + quantity
+                idForCart: state.itemsInCart[itemIndex].idForCart,
+                price: +findItem[0].price + modsPricesSum ,
+                quantity: state.itemsInCart[itemIndex].quantity + quantity,
+                modificators: state.checkedMods,
+                modsNames: modsNamesString
             }
 
             return {
                 ...state,
                 itemsInCart: [...state.itemsInCart.slice(0, itemIndex), newItem, ...state.itemsInCart.slice(itemIndex+1)],
                 idItemForAdding: null,
-                quantity: 1
+                quantity: 1,
+                checkedMods: []
             }
         }
 
         case "PLUS_QUANT_CART": {
 
-            const _id = action.payload;
-            const itemIndex = state.itemsInCart.findIndex(item => item._id === _id);
-            const findItem = state.allItems.filter(item => item._id === _id);
+            const idForCart = action.payload;
+            const itemIndex = state.itemsInCart.findIndex(item => item.idForCart === idForCart);
             const newItem = {
-                name: findItem[0].name,
-                _id: findItem[0]._id,
-                price: findItem[0].price,
-                quantity: state.itemsInCart[itemIndex].quantity + 1
+                name: state.itemsInCart[itemIndex].name,
+                _id: state.itemsInCart[itemIndex]._id,
+                idForCart: state.itemsInCart[itemIndex].idForCart,
+                price: state.itemsInCart[itemIndex].price,
+                quantity: state.itemsInCart[itemIndex].quantity + 1,
+                modificators: state.itemsInCart[itemIndex].modificators,
+                modsNames: state.itemsInCart[itemIndex].modsNames
             }
 
             return {
@@ -112,14 +147,16 @@ const reducer = (state = initialState, action) => {
 
         case "MINUS_QUANT_CART": {
 
-            const _id = action.payload;
-            const itemIndex = state.itemsInCart.findIndex(item => item._id === _id);
-            const findItem = state.allItems.filter(item => item._id === _id);
+            const idForCart = action.payload;
+            const itemIndex = state.itemsInCart.findIndex(item => item.idForCart === idForCart);
             const newItem = {
-                name: findItem[0].name,
-                _id: findItem[0]._id,
-                price: findItem[0].price,
-                quantity: state.itemsInCart[itemIndex].quantity - 1
+                name: state.itemsInCart[itemIndex].name,
+                _id: state.itemsInCart[itemIndex]._id,
+                idForCart: state.itemsInCart[itemIndex].idForCart,
+                price: state.itemsInCart[itemIndex].price,
+                quantity: state.itemsInCart[itemIndex].quantity - 1,
+                modificators: state.itemsInCart[itemIndex].modificators,
+                modsNames: state.itemsInCart[itemIndex].modsNames
             }
 
             return {
@@ -137,7 +174,7 @@ const reducer = (state = initialState, action) => {
                     ...state.currentOrder,
                     items: [action.payload.items],
                     cost: action.payload.totalPrice,
-                    date: new Date()
+                    date: Date.now()
                 },
                 
             }
@@ -189,6 +226,27 @@ const reducer = (state = initialState, action) => {
                 }
             }
         }
+
+        case "CHECK_MOD": {
+            const newArr = [...state.checkedMods, action.payload] 
+            newArr.sort((a, b) => (a.name > b.name) ? 1 : -1);
+            console.log(newArr)
+            return {
+                ...state,
+                checkedMods: newArr
+            }
+        }
+
+        case "UNCHECK_MOD": {
+            const index = state.checkedMods.findIndex(item => item.id === action.payload.id)
+            const newArr = [...state.checkedMods.slice(0, index), ...state.checkedMods.slice(index + 1)]
+            newArr.sort((a, b) => (a.name > b.name) ? 1 : -1);
+            return {
+                ...state,
+                checkedMods: newArr
+            }
+        }
+
 
         
 

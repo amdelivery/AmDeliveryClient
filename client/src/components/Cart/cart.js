@@ -24,23 +24,33 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
                         </div>
                         <img src={logo} alt="kfc-logo"/>
                     </div>
-                    {itemsInCart.map(({name, _id, price, quantity}) => {
+                    {itemsInCart.map(({name, _id, price, quantity, modificators, idForCart}) => {
                         const renderItemInCart = (quantity > 0) ? (
-                                <div key={_id} className="cart__item">
-                                    <div className="cart__item__name-counter">
-                                          <div className="cart__item__name-counter__name">{name}</div>
-                                          <div className="cart__item__name-counter__counter">
-                                              <button className="cart__item__name-counter__counter__minus"
-                                                   onClick={(e) =>{
-                                                   minusQuantinCart(_id, e);
-                                                   deleteFromCart();   
-                                                   }}
-                                                   >-</button>
-                                              <div className="cart__item__name-counter__counter__quantity">{quantity}</div>
-                                              <button className="cart__item__name-counter__counter__plus"  onClick={(e) => plusQuantinCart(_id, e)}>+</button>
-                                          </div>
+                                <div key={idForCart} className={(_id === "delivery") ? "cart__item__delivery" : "cart__item"}>
+                                    <div className="cart__item__line">
+                                        <div className="cart__item__name-counter">
+                                            <div className="cart__item__name-counter__name">{name}</div>
+                                            <div className={(_id === "delivery") ? "hidden" : "cart__item__name-counter__counter"}>
+                                                <button className="cart__item__name-counter__counter__minus"
+                                                    onClick={(e) =>{
+                                                    minusQuantinCart(idForCart, e);
+                                                    deleteFromCart();   
+                                                    }}
+                                                    >-</button>
+                                                <div className="cart__item__name-counter__counter__quantity">{quantity}</div>
+                                                <button className="cart__item__name-counter__counter__plus"  onClick={(e) => plusQuantinCart(idForCart, e)}>+</button>
+                                            </div>
+                                        </div>
+                                        <div className="cart__item__price">{price*quantity}</div>
                                     </div>
-                                    <div className="cart__item__price">{price*quantity}</div>
+                                    <div className="cart__item__modificators">
+                                        {modificators.map(mod => {
+                                            return (<div key ={mod.id} className="cart__item__modificators__wrapper">
+                                                        <div className="cart__item__modificators__wrapper__name">- {mod.name}</div>
+                                                    </div>)
+                                        })}
+                                    </div>
+                                    
                                 </div>  
                               
                         ) : null;

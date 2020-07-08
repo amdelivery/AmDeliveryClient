@@ -13,12 +13,6 @@ const AppHeader = () => {
             <div className='appheader__city'>
                 <img src={geoIcon} alt="geo_icon"/>
                 <div className='appheader__city__name'>г. Крымск</div>
-                <div className='appheader__city__deliverytime'>
-                    <span>Сейчас</span>
-                </div>
-            </div>
-            <div className='appheader__loginbutton'>
-                <span>Войти</span>
             </div>
             <div className='appheader__carticon'>
                 <span>Корзина</span>
