@@ -22,7 +22,7 @@ const AppFooter = () => {
                 </div>
             </div>
             <div className="app-footer__bottom">
-                    <span>© 2020, ИП Неделин Дмитрий Александрович</span>
+                    <span>© 2020, Индивидуальный предприниматель Неделин Д. А.</span>
                     <Link to="/conf" onClick={(e) => window.scrollTo(0, 0)}>Политика конфиденциальности</Link>
             </div>
             
