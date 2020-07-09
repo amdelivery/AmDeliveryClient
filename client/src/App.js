@@ -1,64 +1,36 @@
 import React, {Component} from 'react';
 import AppHeader from './components/AppHeader';
-import ModalOrder from './components/modalOrder';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import Cart from './components/Cart';
 import './App.sass';
-import RestaurantInfo from './components/RestaurantInfo';
-import MenuList from './components/MenuList';
-import ModalAddingToCart from './components/modalAddingToCart';
-import { getDataFromServer, setCitySelected, getAllCategories } from './actions/itemActions';
+import Home from './components/Home';
+import Contacts from './components/info/Contacts';
+import About from './components/info/About';
+import TermsOfUse from './components/info/TermsOfUse';
+import Conf from './components/info/Conf';
+import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
 
 class App extends Component  {
-      
-      componentDidMount() {
-        this.props.getDataFromServer();
-        this.props.setCitySelected();
-        this.props.getAllCategories();
-        }
-
-
-
+ 
       render () {
-        const  {idItemForAdding, currentOrder} = this.props;
-        const modalOrder = (currentOrder.items.length === 0) ? null : <ModalOrder/>
-        const modalWithItem = (idItemForAdding !== null) ? <ModalAddingToCart/> : null;
-      
-        return (
-          <>
-            <AppHeader/>
-            <Cart/>
-            <RestaurantInfo/>
-            <MenuList/>
-            {modalWithItem}
-            {modalOrder}
-          </>
+         return (
+          <Router>
+              <AppHeader/>
+              <Route path="/home" component={Home}/>
+              <Route path="/contacts" component={Contacts}/>
+              <Route path="/about" component={About}/>
+              <Route path="/terms" component={TermsOfUse}/>
+              <Route path="/conf" component={Conf}/>
+              <Redirect from="/" to="/home"/>
+          </Router>
         );
       }
   
 }
 
-App.propTypes = {
-    loadingDataIsOver: PropTypes.bool.isRequired,
-    citySelected: PropTypes.bool.isRequired,
-    idItemForAdding: PropTypes.string,
-    currentOrder: PropTypes.object,
-    getDataFromServer: PropTypes.func,
-    setCitySelected: PropTypes.func,
-    getAllCategories: PropTypes.func
-}
-
-
-const mapStateToProps = ( {loadingDataIsOver, citySelected, idItemForAdding, currentOrder} ) => {
-      return {
-        loadingDataIsOver,
-        citySelected,
-        idItemForAdding,
-        currentOrder
-      }
-}
 
 
 
-export default connect(mapStateToProps, {getDataFromServer, setCitySelected, getAllCategories})(App);
+
+
+
+
+export default App;

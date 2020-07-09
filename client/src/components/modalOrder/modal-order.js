@@ -17,7 +17,7 @@ const ModalOrder = ({clearCurrentOrder, currentOrder, totalPrice, getAdress, get
                     <button className="modal-order-form__button" onClick={(e) => {
                         axios.post('/api/order', currentOrder)
                         .then(res => (res.status === 200) ? alert('Ваш заказ отправлен') : alert('ошибка'))
-                        .then(() => clearCurrentOrder() )}}>Оплатить заказ</button>
+                        .then(() => clearCurrentOrder() )}}>Оплатить банковской картой</button>
                 </div>
             </div>
             
