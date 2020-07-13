@@ -160,3 +160,14 @@ export const uncheckMod = (item) => {
         payload: item
     }
 } 
+
+export const testEq = (number, cost) => dispatch => {
+   let xhr = new XMLHttpRequest();
+   xhr.open('GET', `https://3dsec.sberbank.ru/payment/rest/register.do?token=8b9is22thmgkl78gt5st61tnrp&orderNumber=${number}&amount=${cost}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail`);
+   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+   xhr.send();
+   xhr.getAllResponseHeaders();
+}
+
+
+// https://3dsec.sberbank.ru/payment/rest/register.do&token=8b9is22thmgkl78gt5st61tnrp&orderNumber=${number}&amount=${cost}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail

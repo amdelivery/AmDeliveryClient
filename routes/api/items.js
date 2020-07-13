@@ -6,6 +6,7 @@ const router = express.Router();
 const Item = require('../../models/Item.js');
 const Order = require('../../models/order.js');
 const Category = require('../../models/category.js');
+const OrderNum = require('../../models/category.js');
 
 //@route GET api/items
 //@desc get all items
@@ -14,6 +15,16 @@ router.get('/', (req, res) => {
     Item.find()
         .then(items => res.json(items))
 });
+
+router.get('/ordernum', (req, res) => {
+    OrderNum.find()
+            .then(items => res.json(items))
+})
+
+router.post('/ordernum', (req, res) => {
+    OrderNum.findByIdAndUpdate(req.body.id, {number: +number + 1})         //Тестовый, доработать
+            .then(res => console.log("Актуальный номер заказа изменен"))
+})
 
 router.get('/categories', (req, res) => {
     Category.find().sort({weight: 1})

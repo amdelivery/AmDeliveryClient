@@ -20,7 +20,7 @@ const Contacts = () => {
                 <p>Тел.: +7 918 947 95 33</p>
             </div>
             
-                <Link to="/home"><button className="contacts__to-main-page">На главную</button></Link>
+                <Link to="/"><button className="contacts__to-main-page">На главную</button></Link>
             
         </div>
         

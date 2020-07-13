@@ -16,7 +16,8 @@ const initialState = {
         phone: "",
         comment: "",
         items: [],
-        cost: ""
+        cost: "",
+        number: ""
     },
     totalPrice: null
 
@@ -174,7 +175,8 @@ const reducer = (state = initialState, action) => {
                     ...state.currentOrder,
                     items: [action.payload.items],
                     cost: action.payload.totalPrice,
-                    date: Date.now()
+                    date: Date.now(),
+                    number: uuid()
                 },
                 
             }

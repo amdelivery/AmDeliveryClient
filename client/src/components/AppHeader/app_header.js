@@ -10,7 +10,7 @@ const AppHeader = () => {
         <div className='appheader'>
             
             <div className='appheader__logo'>
-                <Link to="/home">
+                <Link to="/">
                     <img src={logo} alt="logo"/>
                 </Link>
             </div>

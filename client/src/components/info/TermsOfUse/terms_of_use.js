@@ -194,7 +194,7 @@ const TermsOfUse = () => {
                     <p>Обновлено «06» июля 2020 г.</p>
             </div>
             
-                <Link to="/home"><button className="terms-of-use__to-main-page">На главную</button></Link>
+                <Link to="/"><button className="terms-of-use__to-main-page">На главную</button></Link>
             
         </div>
         
