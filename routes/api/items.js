@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const app = express();
+const request = require('request');
 
 
 //Item model
 const Item = require('../../models/Item.js');
 const Order = require('../../models/order.js');
 const Category = require('../../models/category.js');
-const OrderNum = require('../../models/category.js');
+const OrderNum = require('../../models/ordernum.js');
 
-//@route GET api/items
-//@desc get all items
-//@acess public
+
 router.get('/', (req, res) => {
     Item.find()
         .then(items => res.json(items))
@@ -18,12 +18,11 @@ router.get('/', (req, res) => {
 
 router.get('/ordernum', (req, res) => {
     OrderNum.find()
-            .then(items => res.json(items))
+            .then(item => res.json(item))
 })
 
 router.post('/ordernum', (req, res) => {
-    OrderNum.findByIdAndUpdate(req.body.id, {number: +number + 1})         //Тестовый, доработать
-            .then(res => console.log("Актуальный номер заказа изменен"))
+    OrderNum.findByIdAndUpdate(req.body.actualOrderNumberId, {number: req.body.actualOrderNumber});
 })
 
 router.get('/categories', (req, res) => {
@@ -31,9 +30,7 @@ router.get('/categories', (req, res) => {
                    .then(items => res.json(items))
 });
 
-//@route POST api/items
-//@desc create new item
-//@acess public
+
 router.post('/', (req, res) => {
     newItem = new Item({
         name: req.body.name
@@ -42,9 +39,7 @@ router.post('/', (req, res) => {
     newItem.save().then(item => res.json(item));
 });
 
-//@route DELETE api/items/:id
-//@desc  delete item
-//@acess public
+
 router.delete('/:id', (req, res) => {
     Item.findById(req.params.id)
         .then(item => item.remove().then(() => res.json({success: true})))
@@ -63,6 +58,10 @@ router.post('/order', (req, res) => {
     })
 
     newOrder.save().then(item => res.json(item));
+})
+
+router.post('/req', (req, res) => {
+    request(`https://3dsec.sberbank.ru/payment/rest/register.do?token=8b9is22thmgkl78gt5st61tnrp&orderNumber=${req.body.actualOrderNumber}&amount=${req.body.totalPrice}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail`, (err, response, body) => res.send(body))
 })
 
 

@@ -4,6 +4,7 @@ import {v4 as uuid} from 'uuid';
 const initialState = {
     loadingDataIsOver: true,
     citySelected: false,
+    actualOrderNumber: "",
     allItems: [],
     idItemForAdding: null,
     checkedMods: [],
@@ -16,8 +17,7 @@ const initialState = {
         phone: "",
         comment: "",
         items: [],
-        cost: "",
-        number: ""
+        cost: ""
     },
     totalPrice: null
 
@@ -39,7 +39,6 @@ const reducer = (state = initialState, action) => {
             }
 
         case "GET_ALL_CAT": {
-            console.log(action.payload)
             return {
                 ...state,
                 categories: [...action.payload]
@@ -75,7 +74,6 @@ const reducer = (state = initialState, action) => {
             const modsPricesSum = modsPrices.reduce((sum, current) => sum + +current, 0);
             const modsNamesArray = state.checkedMods.map(mod => mod.name);
             const modsNamesString = modsNamesArray.join();
-            console.log(modsNamesString)
             const newItem = {
                 name: findItem[0].name,
                 _id: findItem[0]._id,
@@ -169,15 +167,18 @@ const reducer = (state = initialState, action) => {
         }
 
         case "ADD_TO_ORDER":{
+            console.log(action.payload);
             return {
                 ...state,
+                actualOrderNumber: Math.floor(Math.random() * 1000000),
+                actualOrderNumberId: action.payload.actualOrderNumberId,
                 currentOrder: {
                     ...state.currentOrder,
                     items: [action.payload.items],
                     cost: action.payload.totalPrice,
-                    date: Date.now(),
-                    number: uuid()
+                    date: Date.now()
                 },
+                totalPrice: action.payload.totalPrice
                 
             }
         }

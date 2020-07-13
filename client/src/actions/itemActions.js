@@ -96,14 +96,16 @@ export const minusQuantinCart = (idForCart) => {
     }
 }
 
-export const fromCartInOrder = (items, totalPrice) => {
-    return {
+export const fromCartInOrder = (items, totalPrice) => dispatch => {
+    axios.get('api/ordernum').then(res => dispatch({
         type: ADD_TO_ORDER,
         payload: {
             items,
-            totalPrice
+            totalPrice,
+            actualOrderNum: res.data[0].number,
+            actualOrderNumberId: res.data[0]._id
         }
-    }
+    }))
 }
 
 export const deleteFromCart = () => {
@@ -161,13 +163,13 @@ export const uncheckMod = (item) => {
     }
 } 
 
-export const testEq = (number, cost) => dispatch => {
-   let xhr = new XMLHttpRequest();
-   xhr.open('GET', `https://3dsec.sberbank.ru/payment/rest/register.do?token=8b9is22thmgkl78gt5st61tnrp&orderNumber=${number}&amount=${cost}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail`);
-   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-   xhr.send();
-   xhr.getAllResponseHeaders();
+export const payRequest =  (info, currentOrder) => dispatch => {
+       axios.post('/api/req', info).then(res => document.location.href = res.data.formUrl)
+       
 }
 
 
 // https://3dsec.sberbank.ru/payment/rest/register.do&token=8b9is22thmgkl78gt5st61tnrp&orderNumber=${number}&amount=${cost}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail
+// axios.get('/api/req', info).then(res => document.location.href = res.data.formUrl).then(res => axios.post('/api/order', currentOrder).then(res => alert('Заказ отправлен в работу')));
+
+

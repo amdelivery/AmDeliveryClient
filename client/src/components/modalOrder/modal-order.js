@@ -1,12 +1,12 @@
 import React from 'react';
 import './modal-order.sass';
 import {connect} from 'react-redux';
-import {clearCurrentOrder, getPhone, getAdress, getComment, testEq} from '../../actions/itemActions.js';
+import {clearCurrentOrder, getPhone, getAdress, getComment, payRequest} from '../../actions/itemActions.js';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 
-const ModalOrder = ({clearCurrentOrder, currentOrder, totalPrice, getAdress, getPhone, getComment, testEq}) => {
+const ModalOrder = ({clearCurrentOrder, currentOrder, totalPrice, getAdress, getPhone, getComment, payRequest, actualOrderNumber, actualOrderNumberId}) => {
 
      return (
             <div className="modal-order">  
@@ -15,7 +15,7 @@ const ModalOrder = ({clearCurrentOrder, currentOrder, totalPrice, getAdress, get
                     <input onChange={(e) => getPhone(e.target.value)} className="modal-order-form__input__phone" type="text" placeholder="Введите номер телефона"/>
                     <input onChange={(e) => getAdress(e.target.value)} className="modal-order-form__input__adress" type="text" placeholder="Введите адрес доставки"/>
                     <textarea onChange={(e) => getComment(e.target.value)} className="modal-order-form__comment" name="comment" id="comment" cols="30" rows="10" placeholder="Добавьте комментарии к заказу"></textarea>
-                    <button className="modal-order-form__button" onClick={(e) => testEq(currentOrder.number, currentOrder.cost)}> Оплатить банковской картой</button>
+                    <button className="modal-order-form__button" onClick={(e) => payRequest({actualOrderNumber, actualOrderNumberId, totalPrice}, currentOrder)}> Оплатить банковской картой</button>
                 </div>
             </div>
             
@@ -23,15 +23,17 @@ const ModalOrder = ({clearCurrentOrder, currentOrder, totalPrice, getAdress, get
     
 }
 
-const mapStateToProps = ({currentOrder, totalPrice}) => {
+const mapStateToProps = ({currentOrder, totalPrice, actualOrderNumber, actualOrderNumberId}) => {
     return {
         currentOrder,
-        totalPrice
+        totalPrice,
+        actualOrderNumber,
+        actualOrderNumberId
     }
 }
 
 
-export default connect(mapStateToProps, {clearCurrentOrder, getPhone, getAdress, getComment, testEq})(ModalOrder);
+export default connect(mapStateToProps, {clearCurrentOrder, getPhone, getAdress, getComment, payRequest})(ModalOrder);
 
 // {/* <button className="modal-order-form__button" onClick={(e) => {
 //                         axios.post('/api/order', currentOrder)
