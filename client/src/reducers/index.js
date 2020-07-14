@@ -19,7 +19,8 @@ const initialState = {
         items: [],
         cost: ""
     },
-    totalPrice: null
+    totalPrice: null,
+    returnedOrderId: null
 
 }
 
@@ -249,7 +250,27 @@ const reducer = (state = initialState, action) => {
                 checkedMods: newArr
             }
         }
+        
+        case "PAY_REQUEST": {
+            return {
+                ...state,
+                returnedOrderId: action.payload
+            }
+        }
 
+        case "CLEAR_RET_ORD_ID": {
+            return {
+                ...state,
+                returnedOrderId: null
+            }
+        }
+
+        case "CLOSE_MODAL": {
+            return {
+                ...state,
+                currentOrder: initialState.currentOrder
+            }
+        }
 
         
 

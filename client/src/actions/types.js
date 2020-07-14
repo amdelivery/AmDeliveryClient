@@ -17,3 +17,6 @@ export const GET_COMMENT = "GET_COMMENT";
 export const GET_ALL_CAT = "GET_ALL_CAT";
 export const CHECK_MOD = "CHECK_MOD";
 export const UNCHECK_MOD = "UNCHECK_MOD";
+export const PAY_REQUEST = "PAY_REQUEST";
+export const CLEAR_RET_ORD_ID = "CLEAR_RET_ORD_ID";
+export const CLOSE_MODAL = "CLOSE_MODAL";

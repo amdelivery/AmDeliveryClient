@@ -59,7 +59,7 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
                 </div>
                 
             </div>
-            <button className="cart__button" onClick={(e) => fromCartInOrder(itemsInCart, totalPrice, e)}>
+            <button className={(itemsInCart.length > 1) ? "cart__button" : "disabled"} disabled={(itemsInCart.length > 1) ? false : true} onClick={(e) => fromCartInOrder(itemsInCart.map(item => item.quantity > 0), totalPrice, e)}>
                     <span className="cart__button__title">Заказать</span>
                     <div className="cart__button__total-price">{totalPrice}</div>
             </button>

@@ -16,7 +16,10 @@ import {CITY_SELECTED,
         GET_ADRESS,
         CHECK_MOD,
         UNCHECK_MOD,
-        GET_COMMENT } from "./types.js";
+        GET_COMMENT,
+        CLOSE_MODAL,
+        CLEAR_RET_ORD_ID,
+        PAY_REQUEST} from "./types.js";
 
 import axios from 'axios';
 
@@ -163,8 +166,27 @@ export const uncheckMod = (item) => {
     }
 } 
 
-export const payRequest =  (info, currentOrder) => dispatch => {
-       axios.post('/api/req', info).then(res => document.location.href = res.data.formUrl)
+export const clearReturnedOrderId = () => {
+    return {
+        type: CLEAR_RET_ORD_ID
+    }
+}
+
+export const closeModal = () => {
+    return {
+        type: CLOSE_MODAL
+    }
+
+}
+
+export const payRequest =  (info) => dispatch => {
+       axios.post('/api/req', info).then(res => {
+        dispatch({
+            type: PAY_REQUEST,
+            payload: res.data.orderId
+        });
+        document.location.href = res.data.formUrl;
+       } )
        
 }
 
