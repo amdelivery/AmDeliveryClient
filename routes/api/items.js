@@ -61,7 +61,7 @@ router.post('/order', (req, res) => {
 })
 
 router.post('/req', (req, res) => {
-    request(`https://3dsec.sberbank.ru/payment/rest/register.do?token=8b9is22thmgkl78gt5st61tnrp&orderNumber=${req.body.actualOrderNumber}&amount=${req.body.totalPrice}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail`, (err, response, body) => res.send(body))
+    request(`https://3dsec.sberbank.ru/payment/rest/register.do?token=8b9is22thmgkl78gt5st61tnrp&orderNumber=${req.body.actualOrderNumber}&amount=${req.body.totalPrice}&returnUrl=http://amdelivery.ru/success&failUrl=http://amdelivery.ru/fail`, (err, response, body) => res.send(body))
 })
 
 
