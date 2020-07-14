@@ -8,7 +8,7 @@ import Success from './components/info/Success';
 import Fail from './components/info/Fail';
 import TermsOfUse from './components/info/TermsOfUse';
 import Conf from './components/info/Conf';
-import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 
 class App extends Component  {
  
@@ -30,12 +30,4 @@ class App extends Component  {
   
 }
 
-
-
-
-
-
-
-
 export default App;
-// {/* <Redirect from="/" to="/home"/> */}

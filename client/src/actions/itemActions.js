@@ -180,7 +180,8 @@ export const closeModal = () => {
 
 }
 
-export const payRequest =  (info) => dispatch => {
+export const payRequest =  (info, event) => dispatch => {
+       event.preventDefault();
        dispatch({type: TEST});
        axios.post('/api/req', info).then(res => {
         dispatch({

@@ -2,21 +2,22 @@ import React from 'react';
 import './modal-order.sass';
 import {connect} from 'react-redux';
 import {clearCurrentOrder, getPhone, getAdress, getComment, payRequest, closeModal} from '../../actions/itemActions.js';
-import {Link} from 'react-router-dom';
-import axios from 'axios';
+
 
 
 const ModalOrder = ({closeModal ,currentOrder, totalPrice, getAdress, getPhone, getComment, payRequest, actualOrderNumber, actualOrderNumberId, click}) => {
 
      return (
-            <div className="modal-order">  
-                <div className="modal-order-form">
+            <div className="modal-order">      
+                
                     <div className="modal-order-form__close" onClick={(e) => closeModal(e)}>X</div>
-                    <input onChange={(e) => getPhone(e.target.value)} className="modal-order-form__input__phone" type="text" placeholder="Введите номер телефона"/>
-                    <input onChange={(e) => getAdress(e.target.value)} className="modal-order-form__input__adress" type="text" placeholder="Введите адрес доставки"/>
-                    <textarea onChange={(e) => getComment(e.target.value)} className="modal-order-form__comment" name="comment" id="comment" cols="30" rows="10" placeholder="Добавьте комментарии к заказу"></textarea>
-                    <button className="modal-order-form__button" onClick={(e) => payRequest({actualOrderNumber, actualOrderNumberId, totalPrice}, currentOrder)}> {(click === true) ? "Переход в платежный шлюз..." : "Оплатить банковской картой"}</button>
-                </div>
+                    <form className="modal-order-form" onSubmit={(e) => payRequest({actualOrderNumber, actualOrderNumberId, totalPrice}, e)}>
+                        <input required onChange={(e) => getPhone(e.target.value)} className="modal-order-form__input__phone" type="tel" placeholder="Введите номер телефона"/>
+                        <input required onChange={(e) => getAdress(e.target.value)} className="modal-order-form__input__adress" type="text" placeholder="Введите адрес доставки"/>
+                        <textarea onChange={(e) => getComment(e.target.value)} className="modal-order-form__input__comment" name="comment" id="comment" cols="30" rows="10" placeholder="Добавьте комментарии к заказу"></textarea>
+                        <button className="modal-order-form__button" > {(click === true) ? "Переход в платежный шлюз..." : "Оплатить банковской картой"}</button>
+                    </form>
+                    
             </div>
             
         )

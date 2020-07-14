@@ -15,7 +15,7 @@ const ModalAddingToCart = ({idItemForAdding, allItems, setIdAndQuantToNull, quan
     const allModsNames = checkedMods.map(mod => mod.name);
     const allModsNamesString = allModsNames.join();
     const itemObj = itemForRender[0];
-    const {_id, name, description, imgUrl, price} = itemObj;
+    const {name, description, imgUrl, price} = itemObj;
     const totalSumForOneItemWithMods = sumModsPrices + +price
     return (
         <div className="overlay">
