@@ -18,6 +18,7 @@ import {CITY_SELECTED,
         UNCHECK_MOD,
         GET_COMMENT,
         CLOSE_MODAL,
+        TEST,
         CLEAR_RET_ORD_ID,
         PAY_REQUEST} from "./types.js";
 
@@ -180,6 +181,7 @@ export const closeModal = () => {
 }
 
 export const payRequest =  (info) => dispatch => {
+       dispatch({type: TEST});
        axios.post('/api/req', info).then(res => {
         dispatch({
             type: PAY_REQUEST,

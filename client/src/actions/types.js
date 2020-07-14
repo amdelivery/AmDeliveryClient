@@ -20,3 +20,4 @@ export const UNCHECK_MOD = "UNCHECK_MOD";
 export const PAY_REQUEST = "PAY_REQUEST";
 export const CLEAR_RET_ORD_ID = "CLEAR_RET_ORD_ID";
 export const CLOSE_MODAL = "CLOSE_MODAL";
+export const TEST = "TEST";

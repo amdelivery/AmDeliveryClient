@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 
-const ModalOrder = ({closeModal ,currentOrder, totalPrice, getAdress, getPhone, getComment, payRequest, actualOrderNumber, actualOrderNumberId}) => {
+const ModalOrder = ({closeModal ,currentOrder, totalPrice, getAdress, getPhone, getComment, payRequest, actualOrderNumber, actualOrderNumberId, click}) => {
 
      return (
             <div className="modal-order">  
@@ -15,7 +15,7 @@ const ModalOrder = ({closeModal ,currentOrder, totalPrice, getAdress, getPhone, 
                     <input onChange={(e) => getPhone(e.target.value)} className="modal-order-form__input__phone" type="text" placeholder="Введите номер телефона"/>
                     <input onChange={(e) => getAdress(e.target.value)} className="modal-order-form__input__adress" type="text" placeholder="Введите адрес доставки"/>
                     <textarea onChange={(e) => getComment(e.target.value)} className="modal-order-form__comment" name="comment" id="comment" cols="30" rows="10" placeholder="Добавьте комментарии к заказу"></textarea>
-                    <button className="modal-order-form__button" onClick={(e) => payRequest({actualOrderNumber, actualOrderNumberId, totalPrice}, currentOrder)}> Оплатить банковской картой</button>
+                    <button className="modal-order-form__button" onClick={(e) => payRequest({actualOrderNumber, actualOrderNumberId, totalPrice}, currentOrder)}> {(click === true) ? "Переход в платежный шлюз..." : "Оплатить банковской картой"}</button>
                 </div>
             </div>
             
@@ -23,12 +23,13 @@ const ModalOrder = ({closeModal ,currentOrder, totalPrice, getAdress, getPhone, 
     
 }
 
-const mapStateToProps = ({currentOrder, totalPrice, actualOrderNumber, actualOrderNumberId}) => {
+const mapStateToProps = ({currentOrder, totalPrice, actualOrderNumber, actualOrderNumberId, click}) => {
     return {
         currentOrder,
         totalPrice,
         actualOrderNumber,
         actualOrderNumberId,
+        click
     }
 }
 

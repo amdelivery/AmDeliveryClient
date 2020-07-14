@@ -20,7 +20,8 @@ const initialState = {
         cost: ""
     },
     totalPrice: null,
-    returnedOrderId: null
+    returnedOrderId: null,
+    click: false
 
 }
 
@@ -179,7 +180,8 @@ const reducer = (state = initialState, action) => {
                     cost: action.payload.totalPrice,
                     date: Date.now()
                 },
-                totalPrice: action.payload.totalPrice
+                totalPrice: action.payload.totalPrice,
+                click: false
                 
             }
         }
@@ -198,7 +200,8 @@ const reducer = (state = initialState, action) => {
                 currentOrder: {
                     ...initialState.currentOrder
                 },
-                itemsInCart: []
+                itemsInCart: [],
+                click: false
             }
 
         case "GET_PHONE": {
@@ -269,6 +272,13 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentOrder: initialState.currentOrder
+            }
+        }
+
+        case "TEST": {
+            return {
+                ...state,
+                click: true
             }
         }
 
