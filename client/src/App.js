@@ -6,6 +6,7 @@ import Contacts from './components/info/Contacts';
 import About from './components/info/About';
 import Success from './components/info/Success';
 import Fail from './components/info/Fail';
+import Feedback from './components/info/Feedback';
 import TermsOfUse from './components/info/TermsOfUse';
 import Conf from './components/info/Conf';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
@@ -23,6 +24,7 @@ class App extends Component  {
                 <Route path="/conf" component={Conf}/>
                 <Route path="/success" component={Success}/>
                 <Route path="/fail" component={Fail}/>
+                <Route path="/feedback" component={Feedback}/>
              
           </Router>
         );

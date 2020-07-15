@@ -19,6 +19,9 @@ const AppHeader = () => {
                 <img src={geoIcon} alt="geo_icon"/>
                 <div className='appheader__city__name'>г. Горячий Ключ</div>
             </div>
+            <Link to='/feedback' className='appheader__feedback'>
+                <span>Обратная связь</span>
+            </Link>
             <div className='appheader__carticon'>
                 <span>Корзина</span>
             </div>

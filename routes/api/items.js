@@ -9,6 +9,7 @@ const Item = require('../../models/Item.js');
 const Order = require('../../models/order.js');
 const Category = require('../../models/category.js');
 const OrderNum = require('../../models/ordernum.js');
+const Feedback = require('../../models/feedback.js');
 
 
 router.get('/', (req, res) => {
@@ -62,6 +63,16 @@ router.post('/order', (req, res) => {
 
 router.post('/req', (req, res) => {
     request(`https://3dsec.sberbank.ru/payment/rest/register.do?token=8b9is22thmgkl78gt5st61tnrp&orderNumber=${req.body.actualOrderNumber}&amount=${req.body.totalPrice*100}&returnUrl=http://amdelivery.ru/success&failUrl=http://amdelivery.ru/fail`, (err, response, body) => res.send(body))
+})
+
+
+router.post('/feedback', (req, res) => {
+    newFeedback = new Feedback({
+        name: req.body.name,
+        feedbackText: req.body.feedbackText
+    })
+
+    newFeedback.save().then(item => res.json(item));
 })
 
 
