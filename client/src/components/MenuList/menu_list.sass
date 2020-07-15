@@ -1,7 +1,16 @@
 *
     scroll-behavior: smooth
+
+
+@keyframes fromTop
+    0%
+        top: 15px
+    100%
+        top: 70px
+        
     
-    
+.hidden
+    top: 15px
 
     
 .menu-list
@@ -15,6 +24,7 @@
         display: flex
         justify-content: flex-start
         padding: 15px 50px 0 63px
+        overflow: auto
         &__link
             text-decoration: none
             font-family: 'Roboto', sans-serif
@@ -27,6 +37,14 @@
             &:hover
                 color: #000
                 background-color: #e3e4e6
-                
-
-    
+    &__categories_fixed        
+        padding: 15px 50px 0 63px
+        position: fixed
+        border-bottom: 1px solid #e3e4e6
+        width: 80%
+        height: 55px
+        background-color: #fff
+        z-index: 8
+        top: 70px
+        animation: fromTop 0.2s
+        overflow: auto

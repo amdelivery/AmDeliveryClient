@@ -37,7 +37,7 @@ class Home extends Component {
 
 Home.propTypes = {
     loadingDataIsOver: PropTypes.bool.isRequired,
-    citySelected: PropTypes.bool.isRequired,
+    citySelected: PropTypes.bool,
     idItemForAdding: PropTypes.string,
     currentOrder: PropTypes.object,
     getDataFromServer: PropTypes.func,

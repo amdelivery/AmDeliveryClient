@@ -35,7 +35,7 @@ export const getDataFromServer = () => dispatch => {
     axios.get('/api').then(res => dispatch({
         type: DATA_FIRSTLOAD,
         payload: res.data
-    }))
+    }));
 }
 
 export const getItemIdForAdding = (_id) => {

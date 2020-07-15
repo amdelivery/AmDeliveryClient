@@ -2,7 +2,7 @@ import {v4 as uuid} from 'uuid';
 
 
 const initialState = {
-    loadingDataIsOver: true,
+    loadingDataIsOver: false,
     citySelected: false,
     actualOrderNumber: "",
     allItems: [],
@@ -33,6 +33,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 citySelected: true
             }
+
         case "DATA_FIRSTLOAD":
             return {
                 ...state,
