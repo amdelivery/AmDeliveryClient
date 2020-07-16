@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const app = express();
 const request = require('request');
-const token = require('./config/keys.js').sberAPI;
+const token = require('../../config/keys.js').sberAPI;
 
 
 //Item model
