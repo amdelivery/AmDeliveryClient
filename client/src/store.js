@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 const saveState = (state) => {
     try {
         const serialisedState = JSON.stringify(state);
-        window.localStorage.setItem('app_state', serialisedState);
+        window.sessionStorage.setItem('app_state', serialisedState);
     }
     catch (err) {
         console.log(err);
@@ -16,7 +16,7 @@ const saveState = (state) => {
 
 const loadState = () => {
     try {
-        const serialisedState = window.localStorage.getItem('app_state');
+        const serialisedState = window.sessionStorage.getItem('app_state');
         if (!serialisedState) return undefined;
         return JSON.parse(serialisedState);
     }

@@ -12,7 +12,7 @@ const ModalOrder = ({closeModal , currentOrder, totalPrice, getAdress, getPhone,
             <div className="modal-order">      
                 
                     
-                    <form className="modal-order-form" onSubmit={(e) => payRequest({actualOrderNumber, actualOrderNumberId, totalPrice}, e)}>
+                    <form className="modal-order-form" onSubmit={(e) => alert("На данный момент оплата заказа невозможна")}>
                         <div className="modal-order-form__close" onClick={(e) => closeModal(e)}>X</div>
                         <input required onChange={(e) => getPhone(e.target.value)} className="modal-order-form__input__phone" type="tel" placeholder="Введите номер телефона"/>
                         <input required onChange={(e) => getAdress(e.target.value)} className="modal-order-form__input__adress" type="text" placeholder="Введите адрес доставки"/>
@@ -38,3 +38,4 @@ const mapStateToProps = ({currentOrder, totalPrice, actualOrderNumber, actualOrd
 
 
 export default connect(mapStateToProps, {clearCurrentOrder, getPhone, getAdress, getComment, payRequest, closeModal})(ModalOrder);
+// onSubmit={(e) => payRequest({actualOrderNumber, actualOrderNumberId, totalPrice}, e)}  
