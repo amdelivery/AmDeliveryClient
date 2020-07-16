@@ -108,3 +108,24 @@
                 &::before
                     right: 37px
                     top: 9px
+@media screen and (max-width: 576px)
+    .appheader
+        &__logo
+            width: 30%
+        &__city
+            width: 40%
+        &__feedback
+            width: 10%
+            span
+                &::before
+                    right: 50%
+                    transform: translateX(50%)
+        &__carticon
+            width: 20%
+            span
+                font-size: 0px
+                &::before
+                    right: 60%
+                    top: 9px
+@media screen and (min-width: 319px)
+    .appheader
