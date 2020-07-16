@@ -1,5 +1,6 @@
 import React from 'react';
 import './menu_list_block.sass';
+import './menu_list_block_mqueries.sass';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {getItemIdForAdding} from '../../actions/itemActions.js';

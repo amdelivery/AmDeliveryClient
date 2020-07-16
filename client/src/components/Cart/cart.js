@@ -1,5 +1,6 @@
 import React from 'react';
 import './cart.sass';
+import './cart_mqueries.sass';
 import cart from '../../img/cart.png';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -67,7 +68,7 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
     );
 
     return (
-        <div className="cart">
+        <div className="cart" id="cart">
             {renderedItem}
         </div>
     )

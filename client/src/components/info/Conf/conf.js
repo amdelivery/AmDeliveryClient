@@ -1,5 +1,6 @@
 import React from 'react';
 import './conf.sass';
+import './conf_mqueries.sass';
 import {Link} from 'react-router-dom';
 
 

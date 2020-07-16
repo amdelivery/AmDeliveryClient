@@ -1,5 +1,6 @@
 import React from 'react';
-import './modal-adding-to-cart.sass';
+import './modal_adding_to_cart.sass';
+import './modal_adding_to_cart_mqueries.sass';
 import {ReactComponent as Tick} from '../../img/tick.svg';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';

@@ -1,0 +1,57 @@
+@keyframes fromTop2
+    0%
+        top: 0px
+    100%
+        top: 55px
+
+@keyframes fromTop3
+    0%
+        top: 0px
+    100%
+        top: 45px
+        
+    
+
+    
+@media screen and (max-width: 1440px)
+    .up
+        a
+            font-size: 14px
+    .hidden
+        top: 0px
+    .menu-list
+        &__categories_fixed 
+            top: 55px
+            animation: fromTop2 0.2s
+
+@media screen and (max-width: 1024px)
+    .up
+        a
+            font-size: 11px
+    .hidden
+        top: 0px
+    .menu-list
+        width: 100%
+        &__cat-wrapper
+            width: 90%
+        &__categories_fixed 
+            width: 100%
+            top: 45px
+            animation: fromTop3 0.2s
+            height: 50px
+            justify-content: space-around
+            align-items: center
+            padding: 15px 50px 19px 45px
+        &__categories
+            justify-content: flex-start
+            margin: 0 61px
+            &__link
+                font-size: 14px
+
+@media screen and (max-width: 768px)
+    .menu-list
+        &__cat-wrapper
+        &__categories_fixed
+            
+        &__categories
+

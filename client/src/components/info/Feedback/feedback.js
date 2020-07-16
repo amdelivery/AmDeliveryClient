@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './feedback.sass';
+import './feedback_mqueries.sass';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 

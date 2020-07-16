@@ -1,5 +1,6 @@
 import React from 'react';
 import './fail.sass';
+import './fail_mqueries.sass';
 import {Link} from 'react-router-dom';
 
 

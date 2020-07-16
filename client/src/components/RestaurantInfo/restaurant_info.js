@@ -1,5 +1,6 @@
 import React from 'react';
 import './restaurant_info.sass';
+import './restaurant_info_mqueries.sass';
 import kfcLogo from '../../img/kfc_logo.jpg';
 import {ReactComponent as Box} from '../../img/box.svg'
 

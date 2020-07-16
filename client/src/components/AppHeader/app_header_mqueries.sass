@@ -1,0 +1,110 @@
+@media screen and (max-width: 1440px)
+    .appheader
+        height: 55px
+        &__logo
+            img
+                width: 145px
+        &__city
+            &__name
+                font-size: 12px
+        &__feedback
+            padding-left: 24px
+            span
+                font-size: 13px
+                &::before
+                    top: 18px 
+                    right: 110px
+        &__carticon
+            span
+                font-size: 13px
+                &::before
+                    right: 103px
+                    top: 13px
+
+@media screen and (max-width: 1366px)
+    .appheader
+        height: 55px
+        &__logo
+            img
+                width: 145px
+        &__city
+            width: 55%
+            &__name
+                font-size: 12px
+        &__feedback
+            width: 12.5%
+            padding-left: 24px
+            span
+                font-size: 13px
+                &::before
+                    top: 18px 
+                    right: 128px
+        &__carticon
+            width: 12.5%
+            span
+                font-size: 13px
+                &::before
+                    right: 116px
+                    top: 13px
+
+@media screen and (max-width: 1024px)
+    .appheader
+        height: 45px
+        &__logo
+            img
+                width: 110px
+        &__city
+            width: 70%
+            &__name
+                font-size: 12px
+        &__feedback
+            width: 5%
+            padding-left: 24px
+            span
+                font-size: 0
+                &::before
+                    top: 14px 
+                    right: 15px
+        &__carticon
+            padding-left: 11px
+            width: 15%
+            span
+                font-size: 11px
+                &::before
+                    right: 100px
+                    top: 9px
+            &__counter
+                display: block
+                background-color: #32CD32
+                border-radius: 100%
+                width: 20px
+                height: 20px
+                font-size: 13px
+                font-weight: 500
+                color: #fff
+                margin-left: 5px
+
+@media screen and (max-width: 812px)
+    .appheader
+        &__feedback
+            span
+                &::before
+                    top: 14px 
+                    right: 9px
+        &__carticon
+            span
+                &::before
+                    right: 86px
+                    top: 9px
+
+@media screen and (max-width: 768px)
+    .appheader
+        &__feedback
+            width: 6%
+        &__carticon
+            width: 9%
+            span
+                font-size: 0px
+                &::before
+                    right: 37px
+                    top: 9px

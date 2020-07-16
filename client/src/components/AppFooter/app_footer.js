@@ -1,5 +1,6 @@
 import React from 'react';
 import './app_footer.sass';
+import './app_footer_mqueries.sass';
 import logo from '../../img/AmD3.png';
 import pm from '../../img/pm.jpg';
 import {Link} from 'react-router-dom';

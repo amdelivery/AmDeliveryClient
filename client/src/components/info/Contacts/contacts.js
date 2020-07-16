@@ -1,5 +1,6 @@
 import React from 'react';
 import './contacts.sass';
+import './contacts_mqueries.sass';
 import {Link} from 'react-router-dom';
 
 

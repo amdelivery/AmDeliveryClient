@@ -1,5 +1,6 @@
 import React from 'react';
-import './modal-order.sass';
+import './modal_order.sass';
+import './modal_order_mqueries.sass';
 import {connect} from 'react-redux';
 import {clearCurrentOrder, getPhone, getAdress, getComment, payRequest, closeModal} from '../../actions/itemActions.js';
 
@@ -36,11 +37,3 @@ const mapStateToProps = ({currentOrder, totalPrice, actualOrderNumber, actualOrd
 
 
 export default connect(mapStateToProps, {clearCurrentOrder, getPhone, getAdress, getComment, payRequest, closeModal})(ModalOrder);
-
-// {/* <button className="modal-order-form__button" onClick={(e) => {
-//                         axios.post('/api/order', currentOrder)
-//                         .then(res => (res.status === 200) ? alert('Ваш заказ отправлен') : alert('ошибка'))
-//                         .then(() => clearCurrentOrder() )}}>Оплатить банковской картой</button> */}
-
-
-// onClick={(e) => payRequest({actualOrderNumber, actualOrderNumberId, totalPrice}, currentOrder)}

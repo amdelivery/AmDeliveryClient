@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './success.sass';
+import './success_mqueries.sass';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {clearReturnedOrderId, clearCurrentOrder} from '../../../actions/itemActions.js';

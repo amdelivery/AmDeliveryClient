@@ -1,0 +1,59 @@
+@keyframes cartOpen
+    0%
+        right: -40%
+    100%
+        right: 0
+@keyframes cartClose
+    0%
+        right: 0%
+    100%
+        right: -40%
+@keyframes cartOpen1
+    0%
+        right: -50%
+    100%
+        right: 0
+@keyframes cartClose1
+    0%
+        right: 0%
+    100%
+        right: -50%
+    
+    
+@media screen and (max-width: 1441px)
+    .cart
+        height: calc(100vh - 55px)
+        top: 55px
+
+@media screen and (max-width: 1366px)
+    .cart
+        width: 25%
+
+@media screen and (max-width: 1024px)
+    .cart
+        height: calc(100vh - 45px)
+        top: 45px
+        width: 40%
+        right: -40%
+        animation: cartClose 0.5s
+        &__item
+            &__name-counter
+                &__counter
+                    &__minus
+                        display: block
+                    &__plus
+                        display: block
+            &:hover
+                background-color: #fff
+    .cart_for-mobile
+        right: 0
+        animation: cartOpen 0.5s
+
+@media screen and (max-width: 768px)
+    .cart
+        width: 50%
+        animation: cartClose1 0.5s
+        right: -50%
+    .cart_for-mobile
+        right: 0
+        animation: cartOpen1 0.5s

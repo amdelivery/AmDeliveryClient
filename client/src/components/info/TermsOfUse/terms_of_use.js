@@ -1,5 +1,6 @@
 import React from 'react';
 import './terms_of_use.sass';
+import './terms_of_use_mqueries.sass';
 import {Link} from 'react-router-dom';
 
 
