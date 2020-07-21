@@ -19,7 +19,7 @@ const MenuListBlock = ({categories, allItems, getItemIdForAdding}) => {
                             {renderedItem.map(item => {
                                 return (
                                     <div key={item._id} className="menu-list-block__item" onClick={(e) => getItemIdForAdding(item._id, e)}>
-                                        <img src={item.imgUrl} alt={item.name}/>
+                                        <div className="menu-list-block__item__img"><img src={item.imgUrl} alt={item.name}/></div>
                                         <div className="menu-list-block__item__info-container">
                                                 <div className="menu-list-block__item__infotext">
                                                     <div className="menu-list-block__item__title">{item.name}</div>
