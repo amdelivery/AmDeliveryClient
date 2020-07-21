@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import logo from '../../img/kfc_logo.jpg';
 import {plusQuantinCart, minusQuantinCart, fromCartInOrder, deleteFromCart} from '../../actions/itemActions.js';
+import {ReactComponent as RightArrow} from '../../img/circle-right.svg';
 
 const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, deleteFromCart}) => {
     const totalPrice = itemsInCart.reduce((sum, item) => sum + (item.quantity*item.price), 0);
@@ -64,6 +65,7 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
                     <span className="cart__button__title">Заказать</span>
                     <div className="cart__button__total-price">{totalPrice}</div>
             </button>
+            <RightArrow className="cart__arrow" onClick={(e) => (document.getElementById('cart') !== null) ? document.getElementById('cart').classList.toggle("cart_for-mobile") : null}/>
         </>
     );
 
