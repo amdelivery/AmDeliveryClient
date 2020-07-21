@@ -68,19 +68,32 @@
             span
                 font-size: 10px
 
-@media screen and (max-width: 425px)
+@media screen and (max-width: 495px)
     .app-footer
         &__top
+            flex-direction: column
+            align-items: center
+            padding: 10px 10px
             &__links-line
                 width: 100%
+                flex-direction: row
+                flex-wrap: wrap
+                padding: 0 21%
                 a
                     font-size: 16px
                     margin-bottom: 5px
             &__paymethods
                 width: 60%
+                padding: 0
         &__bottom
             flex-direction: column-reverse
             align-items: center
             a
                 margin-bottom: 5px
                 font-size: 14px
+@media screen and (max-width: 375px)
+    .app-footer
+        &__top
+            &__links-line
+                a
+                    font-size: 14px
