@@ -2,6 +2,7 @@ import React from 'react';
 import './app_header.sass';
 import './app_header_mqueries.sass';
 import logo from '../../img/AmD3.png';
+import logo_mobile from '../../img/logo-mobile.png';
 import geoIcon from '../../img/geo_icon.png';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -13,7 +14,8 @@ const AppHeader = ({itemsInCart}) => {
             
             <div className='appheader__logo'>
                 <Link to="/">
-                    <img src={logo} alt="logo"/>
+                    <img src={logo} alt="logo" className='appheader__logo__desktop'/>
+                    <img src={logo_mobile} alt="logo-mobile" className='appheader__logo__mobile'/>
                 </Link>
             </div>
             

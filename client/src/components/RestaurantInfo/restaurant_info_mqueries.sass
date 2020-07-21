@@ -13,3 +13,27 @@
         &__right-side
             margin-right: 0
             margin-left: 10%
+@media screen and (max-width: 425px)
+    .restaurant-info
+        width: 100%
+        flex-direction: row-reverse
+        justify-content: space-between
+        padding-right: 10%
+        align-items: center
+        &__left-side
+            margin: 0
+            &__info-items
+                flex-direction: column
+            &__title
+                display: none
+        &__right-side
+            img
+                width: 146px
+@media screen and (max-width: 375px)
+    .restaurant-info
+        &__left-side
+            margin: 0
+            &__info-items
+                &__item
+                    width: 100%
+            

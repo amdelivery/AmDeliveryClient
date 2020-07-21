@@ -33,7 +33,7 @@ const ModalAddingToCart = ({idItemForAdding, allItems, setIdAndQuantToNull, quan
                             <span>{description}</span>
                         </div>
                         <div className="modal-adding-to-cart__info__modificators">
-                            <h3>Добавки:</h3>
+                        <h3>{(mods[0].length > 0) ? "Добавки:" : null}</h3>
                             {mods[0].map(mod => {
                                 return (
                                     <div key={mod.id} className="modal-adding-to-cart__info__modificators__line">

@@ -28,6 +28,16 @@
         right: 0%
     100%
         right: -70%
+@keyframes cartOpen3
+    0%
+        right: -100%
+    100%
+        right: 0
+@keyframes cartClose3
+    0%
+        right: 0%
+    100%
+        right: -100%
     
     
 @media screen and (max-width: 1441px)
@@ -76,3 +86,12 @@
     .cart_for-mobile
         right: 0
         animation: cartOpen2 0.5s
+
+@media screen and (max-width: 425px)
+    .cart
+        width: 100%
+        animation: cartClose3 0.5s
+        right: -100%
+    .cart_for-mobile
+        right: 0
+        animation: cartOpen3 0.5s
