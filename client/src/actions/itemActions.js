@@ -184,17 +184,16 @@ export const payRequest =  (info, event) => dispatch => {
        event.preventDefault();
        dispatch({type: TEST});
        axios.post('/api/req', info).then(res => {
-        dispatch({
-            type: PAY_REQUEST,
-            payload: res.data.orderId
-        });
-        document.location.href = res.data.formUrl;
+        console.log(res);
+        
        } )
        
 }
 
-
-// https://3dsec.sberbank.ru/payment/rest/register.do&token=8b9is22thmgkl78gt5st61tnrp&orderNumber=${number}&amount=${cost}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail
-// axios.get('/api/req', info).then(res => document.location.href = res.data.formUrl).then(res => axios.post('/api/order', currentOrder).then(res => alert('Заказ отправлен в работу')));
+// document.location.href = res.data.formUrl;
 
 
+// dispatch({
+//     type: PAY_REQUEST,
+//     payload: res.data.orderId
+// })

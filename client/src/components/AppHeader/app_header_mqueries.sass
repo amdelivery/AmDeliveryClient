@@ -11,15 +11,9 @@
             padding-left: 24px
             span
                 font-size: 13px
-                &::before
-                    top: 18px 
-                    right: 110px
         &__carticon
             span
                 font-size: 13px
-                &::before
-                    right: 103px
-                    top: 13px
 
 @media screen and (max-width: 1366px)
     .appheader
@@ -36,16 +30,11 @@
             padding-left: 24px
             span
                 font-size: 13px
-                &::before
-                    top: 18px 
-                    right: 128px
+                
         &__carticon
             width: 12.5%
             span
                 font-size: 13px
-                &::before
-                    right: 116px
-                    top: 13px
 
 @media screen and (max-width: 1024px)
     .appheader
@@ -59,20 +48,24 @@
                 font-size: 12px
         &__feedback
             width: 5%
-            padding-left: 24px
+            padding-left: 24px  
             span
                 font-size: 0
-                &::before
-                    top: 14px 
-                    right: 15px
+                &:before
+                    top: 50%
+                    right: 30%
+                    transform: translateY(-50%)
+                
         &__carticon
             padding-left: 11px
             width: 15%
             span
-                font-size: 11px
-                &::before
-                    right: 100px
-                    top: 9px
+                font-size: 9px
+                &:before
+                    top: 50%
+                    right: 70%
+                    transform: translateY(-50%)
+                
             &__counter
                 display: block
                 background-color: #32CD32
@@ -84,18 +77,17 @@
                 color: #fff
                 margin-left: 5px
 
-@media screen and (max-width: 812px)
+@media screen and (max-width: 890px)
     .appheader
         &__feedback
             span
-                &::before
-                    top: 14px 
-                    right: 9px
+                
         &__carticon
             span
-                &::before
-                    right: 86px
-                    top: 9px
+                font-size: 0
+                &:before
+                    right: 56%
+                
 
 @media screen and (max-width: 768px)
     .appheader
@@ -105,9 +97,15 @@
             width: 9%
             span
                 font-size: 0px
-                &::before
-                    right: 37px
-                    top: 9px
+
+@media screen and (max-width: 658px)
+    .appheader
+        &__carticon
+            &__counter
+                margin-left: 12px
+            span
+                &:before
+                    right: 50% 
 @media screen and (max-width: 576px)
     .appheader
         &__logo
@@ -119,14 +117,15 @@
             span
                 &::before
                     right: 50%
-                    transform: translateX(50%)
+                    transform: translate(50%, -50%)
         &__carticon
             width: 20%
             span
                 font-size: 0px
                 &::before
                     right: 60%
-                    top: 9px
+                    top: 50%
+                    transform: translateY(-50%)
 
 
 @media screen and (max-width: 495px)
@@ -141,3 +140,10 @@
                 margin: 0 auto
         &__city
             width: 60%
+
+@media screen and (max-width: 320px)
+    .appheader
+        &__carticon
+            span
+                &::before
+                    right: 50%

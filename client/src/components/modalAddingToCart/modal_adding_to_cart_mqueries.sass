@@ -37,9 +37,27 @@
         &__adding-block
             bottom: 30px
 
+@media screen and (max-width: 1308px)
+    .modal-adding-to-cart
+        width: 70%
+        &__info
+            width: 50%
+
+@media screen and (max-width: 1308px)
+    .modal-adding-to-cart
+        width: 75%
+        &__info
+            width: 55%
+
+@media screen and (max-width: 1100px)
+    .modal-adding-to-cart
+        width: 80%
+        &__info
+            width: 58%
+
 @media screen and (max-width: 1024px)
     .modal-adding-to-cart
-        width: 65%
+        width: 70%
         padding: 25px
         &__img
             img
@@ -47,6 +65,7 @@
         &__info
             min-height: 300px
             margin: 0 30px
+            width: 60%
             &__wrapper
             &__descr
                 h1
@@ -99,11 +118,17 @@
                 height: 41px
                 font-size: 15px
 
+@media screen and (max-width: 950px)
+    .modal-adding-to-cart
+        width: 80%
+        &__info
+            width: 60%
+
 @media screen and (max-width: 812px)
     .modal-adding-to-cart
-        width: 75%
+        width: 80%
         padding: 15px
-        margin-top: 5%
+        margin-top: 5px
         margin-bottom: 5%
         &__img
             img
@@ -164,7 +189,13 @@
         margin-bottom: 25vh
         width: 90%
         min-height: 40%
-        padding: 40px
+        padding: 10px
+
+@media screen and (max-width: 635px)
+    .modal-adding-to-cart
+        width: 95%
+        &__info
+            margin: 0 20px
 
 @media screen and (max-width: 576px)
     .modal-adding-to-cart
@@ -176,6 +207,8 @@
         padding: 20px
         flex-direction: column
         border-radius: 0
+        &__info
+            margin: 0 10%
         &__img
             margin: 0 auto
         img
@@ -185,13 +218,16 @@
 
 @media screen and (max-width: 495px)
     .close_cross
-        position: absolute
-        top: 91.5%
-        right: 20px
-        font-size: 25px
-        cursor: pointer
-        font-weight: 700
-        color: #727680
+        display: none
+        &__mobile
+            display: block
+            position: absolute
+            bottom: 5px
+            right: -11%
+            font-size: 25px
+            cursor: pointer
+            font-weight: 700
+            color: #727680
     .modal-adding-to-cart
         &__info
             width: 90%

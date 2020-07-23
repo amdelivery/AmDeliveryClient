@@ -64,7 +64,7 @@ router.post('/order', (req, res) => {
 })
 
 router.post('/req', (req, res) => {
-    request(`https://securepayments.sberbank.ru/payment/rest/register.do?userName=${userName}&password=${password}&orderNumber=${req.body.actualOrderNumber}&amount=${req.body.totalPrice*100}&orderBundle={"cartItems": {"items": [{"positionId": "1", "name": "Доставка", "quantity": { "value": 1, "measure": "шт.absolute-center" }, "itemCode": "DEL-01", "itemPrice": 1}]}}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail`, (err, response, body) => res.send(body))
+    request(`https://securepayments.sberbank.ru/payment/rest/register.do?userName=${userName}&password=${password}&orderNumber=${req.body.actualOrderNumber}&amount=${req.body.totalPrice}&orderBundle={%22cartItems%22:{%22items%22:[{%22positionId%22:%221%22,%22name%22:%22Доставка%22,%22tax%22:{%22taxType%22:0},%22quantity%22:{%22value%22:1,%22measure%22:%22шт%22},%22itemCode%22:%22DEL-01%22,%22itemPrice%22:1},{%22positionId%22:%222%22,%22name%22:%22Заказ%22,%22tax%22:{%22taxType%22:0},%22quantity%22:{%22value%22:1,%22measure%22:%22шт%22},%22itemCode%22:%22ORD-01%22,%22itemPrice%22:1}]}}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail`, (err, response, body) => res.send(body))
 })
 
 
@@ -82,3 +82,6 @@ router.post('/feedback', (req, res) => {
 
 
 module.exports = router;
+
+
+// orderBundle={"cartItems": {"items": [{"positionId": "1", "name": "Доставка", "tax": {"taxType": 6}, "quantity": { "value": 1, "measure": "шт" }, "itemCode": "DEL-01", "itemPrice": 1}, {"positionId": "2", "name": "Заказ в ресторане KFC", "tax": {"taxType": 0}, "quantity": { "value": 1, "measure": "шт" }, "itemCode": "ORD-01", "itemPrice": 1}]}}

@@ -20,7 +20,6 @@ const ModalAddingToCart = ({idItemForAdding, allItems, setIdAndQuantToNull, quan
     const totalSumForOneItemWithMods = sumModsPrices + +price
     return (
         <div className="overlay">
-            
             <div className="modal-adding-to-cart">
                 <div className="close_cross" onClick={(e) => setIdAndQuantToNull(e)}>Х</div>
                 <div className="modal-adding-to-cart__img">
@@ -74,6 +73,7 @@ const ModalAddingToCart = ({idItemForAdding, allItems, setIdAndQuantToNull, quan
                             <div className="modal-adding-to-cart__adding-block__button__title">Добавить</div>
                             <div className="modal-adding-to-cart__adding-block__button__price">{totalSumForOneItemWithMods * quantity} ₽</div>
                         </button>
+                        <div className="close_cross__mobile" onClick={(e) => setIdAndQuantToNull(e)}>Х</div>
                     </div>
             </div>
         </div>

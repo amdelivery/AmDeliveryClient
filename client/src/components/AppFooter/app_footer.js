@@ -14,7 +14,7 @@ const AppFooter = () => {
                     <img src={logo} alt="logo"/>
                 </div>
                 <div className="app-footer__top__links-line">
-                    <Link to="/contacts">Контакты</Link>
+                    <Link to="/404">Контакты</Link>
                     <Link to="/about">О компании</Link>
                     <Link to="/terms" onClick={(e) => window.scrollTo(0, 0)}>Пользовательское соглашение</Link>
                 </div>
@@ -23,7 +23,7 @@ const AppFooter = () => {
                 </div>
             </div>
             <div className="app-footer__bottom">
-                    <span>© 2020, Индивидуальный предприниматель Неделин Д. А.</span>
+                    <span>© 2020, Индивидуальный предприниматель</span>
                     <Link to="/conf" onClick={(e) => window.scrollTo(0, 0)}>Политика конфиденциальности</Link>
             </div>
             
