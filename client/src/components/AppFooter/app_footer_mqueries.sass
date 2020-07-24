@@ -3,7 +3,7 @@
         &__top
             padding: 10px 75px
             &__links-line
-                padding: 0 160px
+                padding: 0 140px
                 a
                     font-size: 14px
         &__bottom
@@ -11,6 +11,18 @@
                 font-size: 13px
             span
                 font-size: 13px
+
+@media screen and (max-width: 1280px)
+    .app-footer
+        &__top
+            &__links-line
+                padding: 0 100px
+
+@media screen and (max-width: 1140px)
+    .app-footer
+        &__top
+            &__links-line
+                padding: 0 70px
 
 @media screen and (max-width: 1024px)
     .app-footer
@@ -26,18 +38,24 @@
                 font-size: 13px
             span
                 font-size: 13px
+    
+@media screen and (max-width: 1024px)
+    .app-footer
+        &__top
+            &__links-line
+                padding: 0 70px
 
 @media screen and (max-width: 812px)
     .app-footer
         &__top
             &__links-line
-                padding: 0 65px
+                padding: 0 40px
 
 @media screen and (max-width: 768px)
     .app-footer
         &__top
             &__links-line
-                padding: 0 60px
+                padding: 0 40px
                 a
                     font-size: 12px
         &__bottom
@@ -45,12 +63,30 @@
                 font-size: 12px
             span
                 font-size: 12px
+
+@media screen and (max-width: 700px)
+    .app-footer
+        &__top
+            &__links-line
+                padding: 0 20px
+
+@media screen and (max-width: 630px)
+    .app-footer
+        &__top
+            align-items: flex-start
+            &__links-line
+                padding: 0 70px
+                flex-direction: column
+                a
+                    text-align: center
+                    margin-bottom: 5px
+
 @media screen and (max-width: 576px)
     .app-footer
         &__top
             flex-direction: column
             align-items: flex-start
-            padding: 10px 50px
+            padding: 10px 40px
             &__paymethods
                 width: 30%
                 padding-left: 11px
@@ -61,6 +97,7 @@
                 padding: 0 10px
                 a
                     font-size: 14px
+                    text-align: start
         &__bottom
             padding: 10px 50px
             a
@@ -78,9 +115,10 @@
                 width: 100%
                 flex-direction: row
                 flex-wrap: wrap
-                padding: 0 21%
+                padding: 0 2%
+                margin-top: 10px
                 a
-                    font-size: 16px
+                    font-size: 14px
                     margin-bottom: 5px
             &__paymethods
                 width: 60%
@@ -91,6 +129,16 @@
             a
                 margin-bottom: 5px
                 font-size: 14px
+
+@media screen and (max-width: 410px)
+    .app-footer
+        &__top
+            &__links-line
+                flex-direction: column
+                a
+                    font-size: 14px
+                    text-align: center
+
 @media screen and (max-width: 375px)
     .app-footer
         &__top

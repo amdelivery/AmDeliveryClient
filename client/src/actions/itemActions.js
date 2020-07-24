@@ -184,16 +184,15 @@ export const payRequest =  (info, event) => dispatch => {
        event.preventDefault();
        dispatch({type: TEST});
        axios.post('/api/req', info).then(res => {
-        console.log(res);
+           console.log(res)
+            dispatch({
+                type: PAY_REQUEST,
+                payload: res.data.orderId
+            });
+            document.location.href = res.data.formUrl;
         
        } )
        
 }
 
-// document.location.href = res.data.formUrl;
 
-
-// dispatch({
-//     type: PAY_REQUEST,
-//     payload: res.data.orderId
-// })
