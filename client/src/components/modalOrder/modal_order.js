@@ -17,7 +17,7 @@ const ModalOrder = ({closeModal , currentOrder, totalPrice, getAdress, getPhone,
                         <input required onChange={(e) => getPhone(e.target.value)} className="modal-order-form__input__phone" type="tel" placeholder="Введите номер телефона"/>
                         <input required onChange={(e) => getAdress(e.target.value)} className="modal-order-form__input__adress" type="text" placeholder="Введите адрес доставки"/>
                         <textarea onChange={(e) => getComment(e.target.value)} className="modal-order-form__input__comment" name="comment" id="comment" cols="30" rows="10" placeholder="Добавьте комментарии к заказу"></textarea>
-                        <button className="modal-order-form__button"> {(click === true) ? "Переход в платежный шлюз..." : "Оплатить банковской картой"}</button>
+                        <button className="modal-order-form__button" disabled={(click === true) ? true : false}> {(click === true) ? "Переход в платежный шлюз..." : "Оплатить банковской картой"}</button>
                     </form>
                     
             </div>

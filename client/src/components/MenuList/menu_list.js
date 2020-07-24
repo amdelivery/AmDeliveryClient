@@ -16,7 +16,8 @@ class MenuList extends Component  {
       }
 
     componentDidMount() {
-        window.addEventListener('scroll', this.setTopOffset)
+        window.addEventListener('scroll', this.setTopOffset);
+
     }
 
     componentWillUnmount() {
@@ -29,6 +30,7 @@ class MenuList extends Component  {
         })
     }
 
+
     
 
     
@@ -39,12 +41,14 @@ class MenuList extends Component  {
         return (
             <div className="menu-list">
                 
-                    <div className={(this.state.topOffset > 350) ? "menu-list__categories_fixed" : "menu-list__categories_fixed hidden"}>
+                    <div id="1" className={(this.state.topOffset > 350) ? "menu-list__categories_fixed" : "menu-list__categories_fixed hidden"}>
                         <div className="menu-list__cat-wrapper">
                             {this.props.categories.map(cat => {
-                                    const id = `#${cat.name}`;
                                     const renderedItem = (cat.name !== "Без категории") ? (
-                                        <a className="menu-list__categories__link" key={cat._id} href={id}>{(cat.name === "Без категории") ? null : cat.name}</a>
+                                        <span className="menu-list__categories__link" key={cat._id} onClick={(e) =>{
+                                            document.getElementById('1').scrollLeft = e.target.offsetLeft - 140;
+                                            window.scrollTo(0, document.getElementById(cat.name).offsetTop - 140)
+                                            } }>{(cat.name === "Без категории") ? null : cat.name}</span>
                                     ) : null;
                                     return renderedItem;
                                 })}
@@ -52,16 +56,17 @@ class MenuList extends Component  {
                     </div>
                 
                 
-                    <div className="menu-list__categories">
-                        <div className="menu-list__cat-wrapper">
+                    <div className="menu-list__categories" >
+                        
                             {this.props.categories.map(cat => {
-                                    const id = `#${cat.name}`;
                                     const renderedItem = (cat.name !== "Без категории") ? (
-                                        <a className="menu-list__categories__link" key={cat._id} href={id}>{(cat.name === "Без категории") ? null : cat.name}</a>
+                                        <span className="menu-list__categories__link" key={cat._id} onClick={(e) =>{
+                                            window.scrollTo(0, document.getElementById(cat.name).offsetTop - 140);
+                                            } }>{(cat.name === "Без категории") ? null : cat.name}</span>
                                     ) : null;
                                     return renderedItem;
                                 })}
-                        </div>
+                        
                         
                     </div>
                 
@@ -70,7 +75,7 @@ class MenuList extends Component  {
                 <div className="menu-list__block">
                     <MenuListBlock/>
                 </div>
-                <div className="up"><a href="#">&#8593; В начало страницы</a></div>
+                <div className="up"><a href="#root">&#8593; В начало страницы</a></div>
             </div>
         )
     }

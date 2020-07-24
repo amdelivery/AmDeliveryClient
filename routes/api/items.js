@@ -80,9 +80,5 @@ router.post('/feedback', (req, res) => {
 
 
 
-
-
 module.exports = router;
 
-// %26orderBundle={"cartItems":{"items":[{"positionId":"1","name":"Доставка","tax":{"taxType":0},"quantity":{"value":1,"measure":"шт"},"itemCode":"DEL-01","itemPrice":1},{"positionId":"2","name":"Заказ","tax":{"taxType":0},"quantity":{"value":1,"measure":"шт"},"itemCode":"ORD-01","itemPrice":1}]}}
-// orderBundle={"cartItems": {"items": [{"positionId": "1", "name": "Доставка", "tax": {"taxType": 6}, "quantity": { "value": 1, "measure": "шт" }, "itemCode": "DEL-01", "itemPrice": 1}, {"positionId": "2", "name": "Заказ в ресторане KFC", "tax": {"taxType": 0}, "quantity": { "value": 1, "measure": "шт" }, "itemCode": "ORD-01", "itemPrice": 1}]}}

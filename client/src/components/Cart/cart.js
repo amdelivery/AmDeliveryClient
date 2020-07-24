@@ -5,8 +5,8 @@ import cart from '../../img/cart.png';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import logo from '../../img/kfc_logo.jpg';
+import {ReactComponent as ArrowRight} from '../../img/arrow-right.svg';
 import {plusQuantinCart, minusQuantinCart, fromCartInOrder, deleteFromCart} from '../../actions/itemActions.js';
-import {ReactComponent as RightArrow} from '../../img/circle-right.svg';
 
 const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, deleteFromCart}) => {
     const totalPrice = itemsInCart.reduce((sum, item) => sum + (item.quantity*item.price), 0);
@@ -28,7 +28,7 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
                     </div>
                     {itemsInCart.map(({name, _id, price, quantity, modificators, idForCart}) => {
                         const renderItemInCart = (quantity > 0) ? (
-                                <div key={idForCart} className={(_id === "delivery") ? "cart__item__delivery" : "cart__item"}>
+                                <div key={_id} className={(_id === "delivery") ? "cart__item__delivery" : "cart__item"}>
                                     <div className="cart__item__line">
                                         <div className="cart__item__name-counter">
                                             <div className="cart__item__name-counter__name">{name}</div>
@@ -65,7 +65,10 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
                     <span className="cart__button__title">Заказать</span>
                     <div className="cart__button__total-price">{totalPrice}</div>
             </button>
-            <RightArrow className="cart__arrow" onClick={(e) => (document.getElementById('cart') !== null) ? document.getElementById('cart').classList.toggle("cart_for-mobile") : null}/>
+            <div className="mobile-bottom-overlay" onClick={(e) => (document.getElementById('cart') !== null) ? document.getElementById('cart').classList.toggle("cart_for-mobile") : null}>
+                    <ArrowRight/>
+            </div>
+            
         </>
     );
 
