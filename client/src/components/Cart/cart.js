@@ -5,7 +5,6 @@ import cart from '../../img/cart.png';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import logo from '../../img/kfc_logo.jpg';
-import {ReactComponent as ArrowRight} from '../../img/arrow-right.svg';
 import {plusQuantinCart, minusQuantinCart, fromCartInOrder, deleteFromCart} from '../../actions/itemActions.js';
 
 const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, deleteFromCart}) => {
@@ -66,7 +65,6 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
                     <div className="cart__button__total-price">{totalPrice}</div>
             </button>
             <div className="mobile-bottom-overlay" onClick={(e) => (document.getElementById('cart') !== null) ? document.getElementById('cart').classList.toggle("cart_for-mobile") : null}>
-                    <ArrowRight/>
             </div>
             
         </>
