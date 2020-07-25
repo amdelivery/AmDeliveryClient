@@ -13,8 +13,8 @@ const MenuListBlock = ({categories, allItems, getItemIdForAdding}) => {
             {categories.map(cat => {
                 const renderedItem = allItems.filter(item => (item.category !== cat.name) ? null : (item.category === "Без категории") ? null : (item.available === "Да") ? item : null);
                 return (
-                    <div key={cat._id} className="menu-list-block">
-                        <div className="menu-list-block__title" id={cat.name}>{(cat.name !== "Без категории") ? cat.name : null}</div>
+                    <div key={cat._id} className="menu-list-block" id={cat.name}>
+                        <div className="menu-list-block__title">{(cat.name !== "Без категории") ? cat.name : null}</div>
                         <div className="menu-list-block__item-wrapper">
                             {renderedItem.map(item => {
                                 return (

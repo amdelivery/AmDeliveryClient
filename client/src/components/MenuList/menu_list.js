@@ -25,15 +25,13 @@ class MenuList extends Component  {
     }
 
     setTopOffset = () => {
+        let activeLink = document.querySelector('.active')
+        document.getElementById('fixed_menu').scrollLeft = (activeLink !== null) ? activeLink.offsetLeft - 140 : 0;
         this.setState({
             topOffset: window.pageYOffset
         })
     }
 
-
-    
-
-    
 
 
 
@@ -41,13 +39,17 @@ class MenuList extends Component  {
         return (
             <div className="menu-list">
                 
-                    <div id="1" className={(this.state.topOffset > 350) ? "menu-list__categories_fixed" : "menu-list__categories_fixed hidden"}>
+                    <div id="fixed_menu" className={(this.state.topOffset > 350) ? "menu-list__categories_fixed" : "menu-list__categories_fixed hidden"}>
                         <div className="menu-list__cat-wrapper">
                             {this.props.categories.map(cat => {
+                                    const pairElement = document.getElementById(cat.name);
                                     const renderedItem = (cat.name !== "Без категории") ? (
-                                        <span className="menu-list__categories__link" key={cat._id} onClick={(e) =>{
-                                            document.getElementById('1').scrollLeft = e.target.offsetLeft - 140;
+                                        <span className={(pairElement === null) ? null : (this.state.topOffset > pairElement.offsetTop - 221 && this.state.topOffset < pairElement.offsetTop + pairElement.offsetHeight - 200) ? "menu-list__categories__link active" : "menu-list__categories__link"}
+                                            key={cat._id}
+                                            onClick={(e) =>{
+                                            document.getElementById('fixed_menu').scrollLeft = e.target.offsetLeft - 140;
                                             window.scrollTo(0, document.getElementById(cat.name).offsetTop - 140)
+
                                             } }>{(cat.name === "Без категории") ? null : cat.name}</span>
                                     ) : null;
                                     return renderedItem;

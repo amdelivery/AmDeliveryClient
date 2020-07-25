@@ -21,6 +21,10 @@
         text-decoration: underline
         color: #000
 
+.active
+    color: #000 !important
+    background-color: #e3e4e6
+
 
     
 .menu-list
@@ -40,6 +44,7 @@
         height: 50px
         margin: 0 61px
         &__link
+            user-select: none
             text-decoration: none
             font-family: 'Roboto', sans-serif
             color: #919399
@@ -48,9 +53,7 @@
             margin-right: 25px
             padding: 10px
             border-radius: 18px
-            &:hover
-                color: #000
-                background-color: #e3e4e6
+            cursor: pointer
     &__categories_fixed        
         padding: 15px 50px 0 63px
         position: fixed
