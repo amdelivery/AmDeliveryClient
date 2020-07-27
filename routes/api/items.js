@@ -12,6 +12,7 @@ const Order = require('../../models/order.js');
 const Category = require('../../models/category.js');
 const OrderNum = require('../../models/ordernum.js');
 const Feedback = require('../../models/feedback.js');
+const User = require('../../models/user.js');
 
 
 
@@ -23,6 +24,10 @@ router.get('/', (req, res) => {
 router.get('/ordernum', (req, res) => {
     OrderNum.find()
             .then(item => res.json(item))
+})
+
+router.get('/users', (req, res) => {
+    User.find().then(items => res.json(items))
 })
 
 router.post('/ordernum', (req, res) => {

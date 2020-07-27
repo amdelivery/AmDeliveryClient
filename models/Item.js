@@ -8,7 +8,8 @@ const ItemSchema = new Schema ({
     imgUrl: String,
     price: String,
     avalaible: Boolean,
-    category: String
+    category: String,
+    resto: String
 })
 
 

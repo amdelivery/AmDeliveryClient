@@ -77,7 +77,7 @@ class MenuList extends Component  {
                 <div className="menu-list__block">
                     <MenuListBlock/>
                 </div>
-                <div className="up"><a href="#root">&#8593; В начало страницы</a></div>
+                <div className="up" onClick={(e) => window.scrollTo(0, 0)}><span>&#8593; В начало страницы</span></div>
             </div>
         )
     }

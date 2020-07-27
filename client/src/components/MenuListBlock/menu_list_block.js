@@ -6,12 +6,12 @@ import {connect} from 'react-redux';
 import {getItemIdForAdding} from '../../actions/itemActions.js';
 
 
-const MenuListBlock = ({categories, allItems, getItemIdForAdding}) => {
+const MenuListBlock = ({categories, allItems, getItemIdForAdding, currentResto}) => {
       
       return (
           <>
             {categories.map(cat => {
-                const renderedItem = allItems.filter(item => (item.category !== cat.name) ? null : (item.category === "Без категории") ? null : (item.available === "Да") ? item : null);
+                const renderedItem = allItems.filter(item => (item.category !== cat.name) ? null : (item.category === "Без категории") ? null : (item.available === "Да" && item.resto === currentResto) ? item : null);
                 return (
                     <div key={cat._id} className="menu-list-block" id={cat.name}>
                         <div className="menu-list-block__title">{(cat.name !== "Без категории") ? cat.name : null}</div>
@@ -46,12 +46,14 @@ const MenuListBlock = ({categories, allItems, getItemIdForAdding}) => {
 MenuListBlock.propTypes = {
     allItems: PropTypes.array.isRequired,
     getItemIdForAdding: PropTypes.func.isRequired,
-    categories: PropTypes.array
+    categories: PropTypes.array,
+    currentResto: PropTypes.string
 }
-const mapStateToProps = ({allItems, categories}) => {
+const mapStateToProps = ({allItems, categories, currentResto}) => {
         return {
             allItems,
-            categories
+            categories,
+            currentResto
         }
 }
 

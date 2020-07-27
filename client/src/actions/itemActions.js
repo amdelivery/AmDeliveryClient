@@ -18,6 +18,9 @@ import {CITY_SELECTED,
         UNCHECK_MOD,
         GET_COMMENT,
         CLOSE_MODAL,
+        GET_ALL_RESTO,
+        CHANGE_CUR_RESTO,
+        CLEAR_CUR_RESTO,
         TEST,
         CLEAR_RET_ORD_ID,
         PAY_REQUEST} from "./types.js";
@@ -28,6 +31,13 @@ export const setCitySelected = () => {
     return {
         type: CITY_SELECTED
     }
+}
+
+export const getAllResto = () => dispatch => {
+    axios.get('api/users').then(res => dispatch({
+        type: GET_ALL_RESTO,
+        payload: res.data
+    }))
 }
 
 
@@ -62,6 +72,7 @@ export const minusQuant = () => {
         type: MINUS_QUANT
     }
 }
+
 
 
 export const addItemToCart = ({_id}, quantity) => {
@@ -178,6 +189,19 @@ export const closeModal = () => {
         type: CLOSE_MODAL
     }
 
+}
+
+export const changeCurResto = (value) => {
+    return {
+        type: CHANGE_CUR_RESTO,
+        payload: value
+    }
+}
+
+export const clearCurResto = () => {
+    return {
+        type: CLEAR_CUR_RESTO
+    }
 }
 
 export const payRequest =  (info, event) => dispatch => {

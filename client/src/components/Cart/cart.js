@@ -42,7 +42,7 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
                                                 <button className="cart__item__name-counter__counter__plus"  onClick={(e) => plusQuantinCart(idForCart, e)}>+</button>
                                             </div>
                                         </div>
-                                        <div className="cart__item__price">{price*quantity}</div>
+                                        <div className="cart__item__price">{price*quantity} ₽</div>
                                     </div>
                                     <div className="cart__item__modificators">
                                         {modificators.map(mod => {
@@ -62,7 +62,7 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
             </div>
             <button className={(itemsInCart.length > 1) ? "cart__button" : "disabled"} disabled={(itemsInCart.length > 1) ? false : true} onClick={(e) => fromCartInOrder(itemsInCart, totalPrice, e)}>
                     <span className="cart__button__title">Заказать</span>
-                    <div className="cart__button__total-price">{totalPrice}</div>
+                    <div className="cart__button__total-price">{totalPrice} ₽</div>
             </button>
             <div className="mobile-bottom-overlay" onClick={(e) => (document.getElementById('cart') !== null) ? document.getElementById('cart').classList.toggle("cart_for-mobile") : null}>
             </div>

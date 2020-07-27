@@ -7,6 +7,8 @@ const initialState = {
     actualOrderNumber: "",
     allItems: [],
     idItemForAdding: null,
+    allResto: [],
+    currentResto: "",
     checkedMods: [],
     quantity: 1,
     categories: [],
@@ -45,6 +47,27 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 categories: [...action.payload]
+            }
+        }
+
+        case "GET_ALL_RESTO": {
+            return {
+                ...state,
+                allResto: [...action.payload]
+            }
+        }
+
+        case "CHANGE_CUR_RESTO": {
+            return {
+                ...state,
+                currentResto: action.payload
+            }
+        }
+
+        case "CLEAR_CUR_RESTO": {
+            return {
+                ...state,
+                currentResto: ""
             }
         }
 

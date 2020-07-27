@@ -5,12 +5,14 @@ import AppFooter from '../../components/AppFooter';
 import Cart from '../../components/Cart';
 import ModalAddingToCart from '../../components/modalAddingToCart';
 import ModalOrder from '../../components/modalOrder';
+import ModalRestoSelect from '../../components/ModalRestoSelect';
 import { getDataFromServer, setCitySelected, getAllCategories } from '../../actions/itemActions.js';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 
 class Home extends Component {
+    
     componentDidMount() {
         this.props.getDataFromServer();
         this.props.setCitySelected();
@@ -18,9 +20,10 @@ class Home extends Component {
         }
 
     render() {
-        const  {idItemForAdding, currentOrder} = this.props;
+        const  {idItemForAdding, currentOrder, currentResto} = this.props;
         const modalOrder = (currentOrder.items.length === 0) ? null : <ModalOrder/>
         const modalWithItem = (idItemForAdding !== null) ? <ModalAddingToCart/> : null;
+        const modalRestoSelect = (currentResto.length == 0) ? <ModalRestoSelect/> : null;
         return (
             <>
                 <Cart/>
@@ -29,6 +32,7 @@ class Home extends Component {
                 <AppFooter/>
                 {modalWithItem}
                 {modalOrder}
+                {modalRestoSelect}
             </>
         )
     }
@@ -42,15 +46,17 @@ Home.propTypes = {
     currentOrder: PropTypes.object,
     getDataFromServer: PropTypes.func,
     setCitySelected: PropTypes.func,
-    getAllCategories: PropTypes.func
+    getAllCategories: PropTypes.func,
+    currentResto: PropTypes.string
 }
 
-const mapStateToProps = ( {loadingDataIsOver, citySelected, idItemForAdding, currentOrder} ) => {
+const mapStateToProps = ( {loadingDataIsOver, citySelected, idItemForAdding, currentOrder, currentResto} ) => {
     return {
       loadingDataIsOver,
       citySelected,
       idItemForAdding,
-      currentOrder
+      currentOrder,
+      currentResto
     }
 }
 
