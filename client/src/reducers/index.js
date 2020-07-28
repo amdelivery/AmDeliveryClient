@@ -15,15 +15,18 @@ const initialState = {
     itemsInCart: [],
     currentOrder: {
         date: "",
-        adress: "",
         phone: "",
         comment: "",
         items: [],
-        cost: ""
+        cost: "",
+        time: "",
+        resto: "",
+        orderNum: ""
     },
     totalPrice: null,
     returnedOrderId: null,
-    click: false
+    click: false,
+    preOrdSended: false
 
 }
 
@@ -95,7 +98,8 @@ const reducer = (state = initialState, action) => {
         case "ADD_TO_CART": {
             const {_id} = action.payload
             const findItem = state.allItems.filter(item => item._id === _id);
-            const deliveryObj = (state.itemsInCart.length > 0) ? null : {name: "Доставка", _id: "delivery", price: "1", quantity: 1, modificators: []};
+            // const deliveryObj = (state.itemsInCart.length > 0) ? null : {name: "Доставка", _id: "delivery", price: "1", quantity: 1, modificators: []};
+            // (deliveryObj !== null) ? [ deliveryObj, ...state.itemsInCart, newItem] :   условие для добавления обьекта доставки в arrayForItemsInCart
             const modsPrices = state.checkedMods.map(mod => mod.price);
             const modsPricesSum = modsPrices.reduce((sum, current) => sum + +current, 0);
             const modsNamesArray = state.checkedMods.map(mod => mod.name);
@@ -109,7 +113,7 @@ const reducer = (state = initialState, action) => {
                 modificators: state.checkedMods,
                 modsNames: modsNamesString
             }
-            const arrayForItemsInCart = (deliveryObj !== null) ? [ deliveryObj, ...state.itemsInCart, newItem] : [...state.itemsInCart, newItem]
+            const arrayForItemsInCart =  [...state.itemsInCart, newItem]
             return {
                 ...state,
                 itemsInCart: arrayForItemsInCart,
@@ -202,7 +206,9 @@ const reducer = (state = initialState, action) => {
                     ...state.currentOrder,
                     items: [action.payload.items],
                     cost: action.payload.totalPrice,
-                    date: Date.now()
+                    date: Date.now(),
+                    orderNum: state.actualOrderNumber,
+                    resto: state.currentResto
                 },
                 totalPrice: action.payload.totalPrice,
                 click: false
@@ -238,12 +244,12 @@ const reducer = (state = initialState, action) => {
             }
         }
 
-        case "GET_ADRESS": {
+        case "GET_TIME": {
             return {
                 ...state,
                 currentOrder: {
                     ...state.currentOrder,
-                    adress: action.payload
+                    time: action.payload
                 }
             }
         }
@@ -303,6 +309,20 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 click: true
+            }
+        }
+
+        case "SEND_PREORDER": {
+            return {
+                ...state,
+                preOrdSended: true
+            }
+        }
+
+        case "CLEAR_PREORD_STATUS": {
+            return {
+                ...state,
+                preOrdSended: false
             }
         }
 

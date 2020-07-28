@@ -3,30 +3,24 @@ import './success.sass';
 import './success_mqueries.sass';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import {clearReturnedOrderId, clearCurrentOrder} from '../../../actions/itemActions.js';
-import axios from 'axios';
+import {clearReturnedOrderId, clearCurrentOrder, clearPreOrderStatus} from '../../../actions/itemActions.js';
 
 
 class Success extends Component {
     
-    componentDidMount() {
-        if (this.props.currentOrder.items.length > 0) {
-            axios.post('/api/order', this.props.currentOrder).then(res => console.log('Заказ принят в работу'))
-        }
-        return
-    }
-
+    
     componentWillUnmount() {
-        this.props.clearReturnedOrderId();
+        this.props.clearPreOrderStatus();
         this.props.clearCurrentOrder();
     }
 
     render() {
-        const ifSuccess = (this.props.returnedOrderId) ? (
+        const ifSuccess = (this.props.preOrdSended) ? (
         <div className="success">
             <div className="success__document">
-                <h1>Оплата прошла успешно!</h1>
-                <h2>Скоро с вами свяжется оператор для подтверждения заказа</h2>
+                <h1>Ваш заказ отправлен в ресторан! Мы уже начали его готовить!</h1>
+                <h2>Номер вашего заказа: {this.props.currentOrder.orderNum}. Не забудьте его записать.</h2>
+                <h2>Ждём вас в ресторане {this.props.currentOrder.resto}!</h2>
                 <Link to="/"><button className="success__to-main-page">На главную</button></Link>
             </div>
         </div>) : (
@@ -49,10 +43,11 @@ class Success extends Component {
 
 }
 
-const mapStateToProps = ({returnedOrderId, currentOrder}) => {
+const mapStateToProps = ({returnedOrderId, currentOrder, preOrdSended}) => {
     return {
         returnedOrderId,
-        currentOrder
+        currentOrder,
+        preOrdSended
     }
 }
-export default connect(mapStateToProps, {clearReturnedOrderId, clearCurrentOrder})(Success);
+export default connect(mapStateToProps, {clearReturnedOrderId, clearCurrentOrder, clearPreOrderStatus})(Success);

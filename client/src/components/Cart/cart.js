@@ -60,7 +60,7 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
                 </div>
                 
             </div>
-            <button className={(itemsInCart.length > 1) ? "cart__button" : "disabled"} disabled={(itemsInCart.length > 1) ? false : true} onClick={(e) => fromCartInOrder(itemsInCart, totalPrice, e)}>
+            <button className={(itemsInCart.length > 0) ? "cart__button" : "disabled"} disabled={(itemsInCart.length > 0) ? false : true} onClick={(e) => fromCartInOrder(itemsInCart, totalPrice, e)}>
                     <span className="cart__button__title">Заказать</span>
                     <div className="cart__button__total-price">{totalPrice} ₽</div>
             </button>

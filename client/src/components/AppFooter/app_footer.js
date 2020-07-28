@@ -9,7 +9,21 @@ import {Link} from 'react-router-dom';
 const AppFooter = () => {
     return (
         <div className="app-footer">
-            <div className="app-footer__top">
+            
+            <div className="app-footer__bottom">
+                    <span>© 2020 г.</span>
+                    <Link to="/conf" onClick={(e) => window.scrollTo(0, 0)}>Политика конфиденциальности</Link>
+            </div>
+            
+        </div>
+    )
+}
+
+
+export default AppFooter;
+
+
+{/* <div className="app-footer__top">
                 <div className="app-footer__top__logo">
                     <img src={logo} alt="logo"/>
                 </div>
@@ -21,15 +35,4 @@ const AppFooter = () => {
                 <div className="app-footer__top__paymethods">
                     <img src={pm} alt="pm"/>
                 </div>
-            </div>
-            <div className="app-footer__bottom">
-                    <span>© 2020, Индивидуальный предприниматель</span>
-                    <Link to="/conf" onClick={(e) => window.scrollTo(0, 0)}>Политика конфиденциальности</Link>
-            </div>
-            
-        </div>
-    )
-}
-
-
-export default AppFooter;
+            </div> */}

@@ -13,7 +13,8 @@ import {CITY_SELECTED,
         DEL_FROM_CART, 
         CLEAR_CUR_ORDER,
         GET_PHONE,
-        GET_ADRESS,
+        GET_TIME,
+        SEND_PREORDER,
         CHECK_MOD,
         UNCHECK_MOD,
         GET_COMMENT,
@@ -22,6 +23,7 @@ import {CITY_SELECTED,
         CHANGE_CUR_RESTO,
         CLEAR_CUR_RESTO,
         TEST,
+        CLEAR_PREORD_STATUS,
         CLEAR_RET_ORD_ID,
         PAY_REQUEST} from "./types.js";
 
@@ -143,10 +145,10 @@ export const getPhone = (phone) => {
     }
 }
 
-export const getAdress = (adress) => {
+export const getTime = (time) => {
     return {
-        type: GET_ADRESS,
-        payload: adress
+        type: GET_TIME,
+        payload: time
     }
 }
 
@@ -219,4 +221,16 @@ export const payRequest =  (info, event) => dispatch => {
        
 }
 
+export const sendPreOrder = (currentOrder) => dispatch =>  {
+    axios.post('/api/order', currentOrder).then(res => dispatch({
+        type: SEND_PREORDER
+    })).then(result => document.location.href = 'http://localhost:3000/success');
+}
+
+
+export const clearPreOrderStatus = () => {
+    return {
+        type: CLEAR_PREORD_STATUS
+    }
+}
 

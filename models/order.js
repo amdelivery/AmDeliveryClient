@@ -3,12 +3,14 @@ const Schema = mongoose.Schema;
 
 const OrderSchema = new Schema ({
     date: String,
-    adress: String,
     phone: String,
     comment: String,
     items: Array,
     cost: String,
-    accepted: String
+    accepted: String,
+    time: String,
+    number: String,
+    resto: String
 })
 
 module.exports = Order = mongoose.model('order', OrderSchema);

@@ -58,12 +58,14 @@ router.delete('/:id', (req, res) => {
 router.post('/order', (req, res) => {
     newOrder = new Order({
         date: req.body.date,
-        adress: req.body.adress,
         phone: req.body.phone,
         comment: req.body.comment,
         items: req.body.items,
         cost: req.body.cost,
-        accepted: false
+        accepted: false,
+        time: req.body.time,
+        number: req.body.orderNum,
+        resto: req.body.resto
     })
 
     newOrder.save().then(item => res.json(item));
