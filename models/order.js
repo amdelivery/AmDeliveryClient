@@ -7,7 +7,7 @@ const OrderSchema = new Schema ({
     comment: String,
     items: Array,
     cost: String,
-    accepted: String,
+    accepted: Boolean,
     time: String,
     number: String,
     resto: String
