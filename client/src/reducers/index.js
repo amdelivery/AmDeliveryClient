@@ -200,14 +200,13 @@ const reducer = (state = initialState, action) => {
             console.log(action.payload);
             return {
                 ...state,
-                actualOrderNumber: Math.floor(Math.random() * 1000000),
                 actualOrderNumberId: action.payload.actualOrderNumberId,
                 currentOrder: {
                     ...state.currentOrder,
                     items: [action.payload.items],
                     cost: action.payload.totalPrice,
                     date: Date.now(),
-                    orderNum: state.actualOrderNumber,
+                    orderNum: Math.floor(Math.random() * 1000000),
                     resto: state.currentResto
                 },
                 totalPrice: action.payload.totalPrice,
