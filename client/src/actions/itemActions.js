@@ -232,7 +232,7 @@ export const payRequest =  (info, event) => dispatch => {
 export const sendPreOrder = (currentOrder) => dispatch =>  {
     axios.post('/api/order', currentOrder).then(res => dispatch({
         type: SEND_PREORDER
-    })).then(result => document.location.href = 'http://localhost:3000/success');
+    })).then(result => document.location.href = 'http://amdelivery.ru/success');
 }
 
 
