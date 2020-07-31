@@ -26,3 +26,6 @@ export const CHANGE_CUR_RESTO = "CHANGE_CUR_RESTO";
 export const CLEAR_CUR_RESTO = "CLEAR_CUR_RESTO";
 export const SEND_PREORDER ="SEND_PREORDER";
 export const CLEAR_PREORD_STATUS ="CLEAR_PREORD_STATUS";
+export const GET_HOURS = "GET_HOURS";
+export const GET_MINUTES = "GET_MINUTES";
+

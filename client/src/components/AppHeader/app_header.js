@@ -39,7 +39,7 @@ class AppHeader extends Component {
                      onClick={(e) => (document.getElementById('cart') !== null) ? document.getElementById('cart').classList.toggle("cart_for-mobile") : null}
                 >
                     <span>Корзина</span>
-                    <div className='appheader__carticon__counter'>{(this.props.itemsInCart.length > 0) ? this.props.itemsInCart.length - 1 : "0"}</div>
+                    <div className='appheader__carticon__counter'>{(this.props.itemsInCart.length > 0) ? this.props.itemsInCart.length : "0"}</div>
                 </div>
             </div>
         )

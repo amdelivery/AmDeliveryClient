@@ -63,7 +63,8 @@ router.post('/order', (req, res) => {
         items: req.body.items,
         cost: req.body.cost,
         accepted: false,
-        time: req.body.time,
+        visHours: req.body.visHours,
+        visMinutes: req.body.visMinutes,
         number: req.body.orderNum,
         resto: req.body.resto
     })

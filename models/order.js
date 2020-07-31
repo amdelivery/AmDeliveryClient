@@ -8,7 +8,8 @@ const OrderSchema = new Schema ({
     items: Array,
     cost: String,
     accepted: Boolean,
-    time: String,
+    visHours: String,
+    visMinutes: String,
     number: String,
     resto: String
 })

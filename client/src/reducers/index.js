@@ -19,7 +19,8 @@ const initialState = {
         comment: "",
         items: [],
         cost: "",
-        time: "",
+        visHours: "",
+        visMinutes: "",
         resto: "",
         orderNum: ""
     },
@@ -243,12 +244,22 @@ const reducer = (state = initialState, action) => {
             }
         }
 
-        case "GET_TIME": {
+        case "GET_HOURS": {
             return {
                 ...state,
                 currentOrder: {
                     ...state.currentOrder,
-                    time: action.payload
+                    visHours: action.payload
+                }
+            }
+        }
+
+        case "GET_MINUTES": {
+            return {
+                ...state,
+                currentOrder: {
+                    ...state.currentOrder,
+                    visMinutes: action.payload
                 }
             }
         }

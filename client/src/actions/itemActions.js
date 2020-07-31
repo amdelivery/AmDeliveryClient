@@ -13,7 +13,8 @@ import {CITY_SELECTED,
         DEL_FROM_CART, 
         CLEAR_CUR_ORDER,
         GET_PHONE,
-        GET_TIME,
+        GET_HOURS,
+        GET_MINUTES,
         SEND_PREORDER,
         CHECK_MOD,
         UNCHECK_MOD,
@@ -145,10 +146,17 @@ export const getPhone = (phone) => {
     }
 }
 
-export const getTime = (time) => {
+export const getHours = (hours) => {
     return {
-        type: GET_TIME,
-        payload: time
+        type: GET_HOURS,
+        payload: hours
+    }
+}
+
+export const getMinutes = (minutes) => {
+    return {
+        type: GET_MINUTES,
+        payload: minutes
     }
 }
 
@@ -224,7 +232,7 @@ export const payRequest =  (info, event) => dispatch => {
 export const sendPreOrder = (currentOrder) => dispatch =>  {
     axios.post('/api/order', currentOrder).then(res => dispatch({
         type: SEND_PREORDER
-    })).then(result => document.location.href = 'http://amdelivery.ru/success');
+    })).then(result => document.location.href = 'http://localhost:3000/success');
 }
 
 
