@@ -2,7 +2,7 @@ import React from 'react';
 import './restaurant_info.sass';
 import './restaurant_info_mqueries.sass';
 import kfcLogo from '../../img/kfc_logo.jpg';
-import {ReactComponent as Box} from '../../img/box.svg';
+// import {ReactComponent as Box} from '../../img/box.svg';
 import {connect} from 'react-redux';
 
 const RestaurantInfo = ({currentResto, allResto}) => {
@@ -12,11 +12,11 @@ const RestaurantInfo = ({currentResto, allResto}) => {
                 <div className="restaurant-info__left-side__title">{currentResto}</div>
                 <div className="restaurant-info__left-side__info-items">
                     <div className="restaurant-info__left-side__info-items__item">
-                        {allResto.map(rest => (rest.name === currentResto) ? (<span>{rest.adress}</span>) : null)}  
+                        {allResto.map((rest, i) => (rest.name === currentResto) ? (<span key={i} >{rest.adress}</span>) : null)}  
                         
                     </div>
                     <div className="restaurant-info__left-side__info-items__item">
-                        {allResto.map(rest => (rest.name === currentResto) ? (<span>{rest.worktime}</span>) : null)}
+                        {allResto.map((rest, i) => (rest.name === currentResto) ? (<span key={i} >{rest.worktime}</span>) : null)}
                     </div>
                 </div>
             </div>

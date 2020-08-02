@@ -13,6 +13,8 @@ const Cart = ({itemsInCart, plusQuantinCart, minusQuantinCart, fromCartInOrder, 
         <>
             <img className="cart__img__cart" src={cart} alt="cart"/>
             <span className="cart__descr">Корзина пуста</span>
+            <div className="mobile-bottom-overlay" onClick={(e) => (document.getElementById('cart') !== null) ? document.getElementById('cart').classList.toggle("cart_for-mobile") : null}>
+            </div>
         </>
     ) : (
         <>  

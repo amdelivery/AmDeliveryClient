@@ -22,7 +22,7 @@ class AppHeader extends Component {
             <div className='appheader'>
                 
                 <div className='appheader__logo'>
-                    <Link to="/">
+                    <Link to="/" onClick={(e) => window.scrollTo(0, 0)}>
                         <img src={logo} alt="logo" className='appheader__logo__desktop'/>
                         <img src={logo_mobile} alt="logo-mobile" className='appheader__logo__mobile'/>
                     </Link>

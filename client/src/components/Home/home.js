@@ -23,7 +23,7 @@ class Home extends Component {
         const  {idItemForAdding, currentOrder, currentResto} = this.props;
         const modalOrder = (currentOrder.items.length === 0) ? null : <ModalOrder/>
         const modalWithItem = (idItemForAdding !== null) ? <ModalAddingToCart/> : null;
-        const modalRestoSelect = (currentResto.length == 0) ? <ModalRestoSelect/> : null;
+        const modalRestoSelect = (currentResto.length === 0) ? <ModalRestoSelect/> : null;
         return (
             <>
                 <Cart/>
