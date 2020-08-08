@@ -19,8 +19,7 @@ const initialState = {
         comment: "",
         items: [],
         cost: "",
-        visHours: "",
-        visMinutes: "",
+        adress: "",
         resto: "",
         orderNum: ""
     },
@@ -99,8 +98,8 @@ const reducer = (state = initialState, action) => {
         case "ADD_TO_CART": {
             const {_id} = action.payload
             const findItem = state.allItems.filter(item => item._id === _id);
-            // const deliveryObj = (state.itemsInCart.length > 0) ? null : {name: "Доставка", _id: "delivery", price: "1", quantity: 1, modificators: []};
-            // (deliveryObj !== null) ? [ deliveryObj, ...state.itemsInCart, newItem] :   условие для добавления обьекта доставки в arrayForItemsInCart
+            const deliveryObj = (state.itemsInCart.length > 0) ? null : {name: "Доставка", _id: "delivery", price: "1", quantity: 1, modificators: []};
+            
             const modsPrices = state.checkedMods.map(mod => mod.price);
             const modsPricesSum = modsPrices.reduce((sum, current) => sum + +current, 0);
             const modsNamesArray = state.checkedMods.map(mod => mod.name);
@@ -114,7 +113,7 @@ const reducer = (state = initialState, action) => {
                 modificators: state.checkedMods,
                 modsNames: modsNamesString
             }
-            const arrayForItemsInCart =  [...state.itemsInCart, newItem]
+            const arrayForItemsInCart = (deliveryObj !== null) ? [ deliveryObj, ...state.itemsInCart, newItem] : [...state.itemsInCart, newItem]
             return {
                 ...state,
                 itemsInCart: arrayForItemsInCart,
@@ -244,25 +243,7 @@ const reducer = (state = initialState, action) => {
             }
         }
 
-        case "GET_HOURS": {
-            return {
-                ...state,
-                currentOrder: {
-                    ...state.currentOrder,
-                    visHours: action.payload
-                }
-            }
-        }
-
-        case "GET_MINUTES": {
-            return {
-                ...state,
-                currentOrder: {
-                    ...state.currentOrder,
-                    visMinutes: action.payload
-                }
-            }
-        }
+    
 
         case "GET_COMMENT": {
             return {
@@ -270,6 +251,16 @@ const reducer = (state = initialState, action) => {
                 currentOrder: {
                     ...state.currentOrder,
                     comment: action.payload
+                }
+            }
+        }
+
+        case "GET_ADRESS": {
+            return {
+                ...state,
+                currentOrder: {
+                    ...state.currentOrder,
+                    adress: action.payload
                 }
             }
         }

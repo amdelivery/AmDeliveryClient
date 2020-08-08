@@ -73,7 +73,7 @@ router.post('/order', (req, res) => {
 })
 
 router.post('/req', (req, res) => {
-    request(`https://securepayments.sberbank.ru/payment/rest/register.do?userName=${userName}&password=${password}&orderNumber=${req.body.actualOrderNumber}&amount=${req.body.totalPrice*100}&returnUrl=http://amdelivery.ru/success&failUrl=http://amdelivery.ru/fail&orderBundle={\"cartItems\":{\"items\":[{\"positionId\":\"1\",\"name\":\"Dostavka\",\"tax\":{\"taxType\":0},\"quantity\":{\"value\":1,\"measure\":\"sht\"},\"itemCode\":\"DEL-01\",\"itemPrice\":100},{\"positionId\":\"2\",\"name\":\"Zakaz\",\"tax\":{\"taxType\":0},\"quantity\":{\"value\":1,\"measure\":\"sht\"},\"itemCode\":\"ORD-01\",\"itemPrice\":${req.body.totalPrice*100 - 100}}]}}`, (err, response, body) => res.send(body));
+    request(`https://3dsec.sberbank.ru/payment/rest/register.do?userName=${userName}&password=${password}&orderNumber=${req.body.actualOrderNumber}&amount=${req.body.totalPrice*100}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail`, (err, response, body) => res.send(body));
 })
 
 
@@ -90,3 +90,4 @@ router.post('/feedback', (req, res) => {
 
 module.exports = router;
 
+// orderBundle={\"cartItems\":{\"items\":[{\"positionId\":\"1\",\"name\":\"Dostavka\",\"tax\":{\"taxType\":0},\"quantity\":{\"value\":1,\"measure\":\"sht\"},\"itemCode\":\"DEL-01\",\"itemPrice\":100},{\"positionId\":\"2\",\"name\":\"Zakaz\",\"tax\":{\"taxType\":0},\"quantity\":{\"value\":1,\"measure\":\"sht\"},\"itemCode\":\"ORD-01\",\"itemPrice\":${req.body.totalPrice*100 - 100}}]}}

@@ -21,6 +21,7 @@ import {CITY_SELECTED,
         GET_COMMENT,
         CLOSE_MODAL,
         GET_ALL_RESTO,
+        GET_ADRESS,
         CHANGE_CUR_RESTO,
         CLEAR_CUR_RESTO,
         TEST,
@@ -138,6 +139,13 @@ export const clearCurrentOrder = () => {
     }
 }
 
+export const getAdress = (adress) => {
+    return {
+        type: GET_ADRESS,
+        payload: adress
+    }
+}
+
 
 export const getPhone = (phone) => {
     return {
@@ -214,8 +222,7 @@ export const clearCurResto = () => {
     }
 }
 
-export const payRequest =  (info, event) => dispatch => {
-       event.preventDefault();
+export const payRequest =  (info) => dispatch => {
        dispatch({type: TEST});
        axios.post('/api/req', info).then(res => {
            console.log(res)

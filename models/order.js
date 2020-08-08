@@ -6,10 +6,9 @@ const OrderSchema = new Schema ({
     phone: String,
     comment: String,
     items: Array,
+    adress: String,
     cost: String,
     accepted: Boolean,
-    visHours: String,
-    visMinutes: String,
     number: String,
     resto: String
 })

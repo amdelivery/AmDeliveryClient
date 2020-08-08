@@ -29,8 +29,8 @@ class ModalRestoSelect extends Component {
                 
                     
                     <form className="modal-resto-select-form">
-                        <h3>На нашем сайте вы можете оформить предзаказ в ресторане KFC!</h3>
-                        <h3>Выберите ресторан, в котором хотите оформить предзаказ:</h3>
+                        <h3>На нашем сайте вы можете оформить доставку из ресторанов вашего города!</h3>
+                        <h3>Выберите ресторан, в котором хотите оформить доставку:</h3>
                         <select value={this.state.chosenResto} onChange={(e) => this.setResto(e)}>
                             <option selected>Выберите ресторан</option>
                             {this.props.allResto.map(rest => (rest.name === "Admin" || rest.name === "Ресторан не выбран") ? null : (<option key={rest.name} value={rest.name}>{rest.name} ({rest.adress})</option>))}
