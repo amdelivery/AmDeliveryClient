@@ -15,7 +15,6 @@ import {CITY_SELECTED,
         GET_PHONE,
         GET_HOURS,
         GET_MINUTES,
-        SEND_PREORDER,
         CHECK_MOD,
         UNCHECK_MOD,
         GET_COMMENT,
@@ -25,6 +24,7 @@ import {CITY_SELECTED,
         CHANGE_CUR_RESTO,
         CLEAR_CUR_RESTO,
         TEST,
+        PAY_STATUS,
         CLEAR_PREORD_STATUS,
         CLEAR_RET_ORD_ID,
         PAY_REQUEST} from "./types.js";
@@ -115,16 +115,14 @@ export const minusQuantinCart = (idForCart) => {
     }
 }
 
-export const fromCartInOrder = (items, totalPrice) => dispatch => {
-    axios.get('api/ordernum').then(res => dispatch({
+export const fromCartInOrder = (items, totalPrice) => {
+    return {
         type: ADD_TO_ORDER,
         payload: {
             items,
-            totalPrice,
-            actualOrderNum: res.data[0].number,
-            actualOrderNumberId: res.data[0]._id
+            totalPrice
         }
-    }))
+    }
 }
 
 export const deleteFromCart = () => {
@@ -225,7 +223,6 @@ export const clearCurResto = () => {
 export const payRequest =  (info) => dispatch => {
        dispatch({type: TEST});
        axios.post('/api/req', info).then(res => {
-           console.log(res)
             dispatch({
                 type: PAY_REQUEST,
                 payload: res.data.orderId
@@ -236,11 +233,20 @@ export const payRequest =  (info) => dispatch => {
        
 }
 
-export const sendPreOrder = (currentOrder) => dispatch =>  {
-    axios.post('/api/order', currentOrder).then(res => dispatch({
-        type: SEND_PREORDER
-    })).then(result => document.location.href = 'http://amdelivery.ru/success');
+
+export const payStatus = (orderId, currentOrder) => dispatch => {
+
+    axios.post('/api/paystatus', orderId).then(res => {
+        dispatch ({
+            type: PAY_STATUS,
+            payload: res.data.orderStatus
+          });
+        let orderSend = (res.data.orderStatus == 2) ? axios.post('/api/order', currentOrder) : alert("Ошибка оплаты!");
+    })
+
 }
+
+
 
 
 export const clearPreOrderStatus = () => {
@@ -248,4 +254,3 @@ export const clearPreOrderStatus = () => {
         type: CLEAR_PREORD_STATUS
     }
 }
-

@@ -29,4 +29,5 @@ export const CLEAR_PREORD_STATUS ="CLEAR_PREORD_STATUS";
 export const GET_HOURS = "GET_HOURS";
 export const GET_MINUTES = "GET_MINUTES";
 export const GET_ADRESS = "GET_ADRESS";
+export const PAY_STATUS = "PAY_STATUS";
 

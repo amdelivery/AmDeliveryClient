@@ -63,8 +63,7 @@ router.post('/order', (req, res) => {
         items: req.body.items,
         cost: req.body.cost,
         accepted: false,
-        visHours: req.body.visHours,
-        visMinutes: req.body.visMinutes,
+        adress: req.body.adress,
         number: req.body.orderNum,
         resto: req.body.resto
     })
@@ -73,9 +72,12 @@ router.post('/order', (req, res) => {
 })
 
 router.post('/req', (req, res) => {
-    request(`https://3dsec.sberbank.ru/payment/rest/register.do?userName=${userName}&password=${password}&orderNumber=${req.body.actualOrderNumber}&amount=${req.body.totalPrice*100}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail`, (err, response, body) => res.send(body));
+    request(`https://securepayments.sberbank.ru/payment/rest/register.do?userName=${userName}&password=${password}&orderNumber=${req.body.actualOrderNumber}&amount=${req.body.totalPrice*100}&returnUrl=http://localhost:3000/success&failUrl=http://localhost:3000/fail`, (err, response, body) => res.send(body));
 })
 
+router.post('/paystatus', (req, res) => {
+    request(`https://securepayments.sberbank.ru/payment/rest/getOrderStatusExtended.do?userName=${userName}&password=${password}&orderId=${req.body.orderId}`, (err, response, body) => res.send(body));
+})
 
 router.post('/feedback', (req, res) => {
     newFeedback = new Feedback({
